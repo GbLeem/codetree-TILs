@@ -39,12 +39,11 @@ int main()
             cin >> ch;
 
             ll.insert(it, ch);
-            it++;
         }
         else if(query == 'D')
         {
             if(it != ll.end())
-                ll.erase(it);
+               it = ll.erase(it);
         }
     }
 
