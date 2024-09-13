@@ -43,7 +43,8 @@ int main()
         }
         else if(query == 'D')
         {
-            ll.erase(it);
+            if(it != ll.end())
+                ll.erase(it);
         }
     }
     
@@ -52,9 +53,6 @@ int main()
     {
         cout<<l;
     }
-
-    
-
 
     return 0;
 }
