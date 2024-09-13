@@ -4,8 +4,7 @@ using namespace std;
 
 int main() 
 {
-    list<char> ll;
-    list<char>::iterator it;
+    list<char> ll;    
 
     int n, m;
     cin >> n >> m;
@@ -17,7 +16,7 @@ int main()
         ll.push_back(c);
     }
 
-    it = ll.end();
+    list<char>::iterator it = ll.end();
     
     for(int i = 0; i < m; ++i)
     {
