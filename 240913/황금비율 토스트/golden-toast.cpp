@@ -39,6 +39,7 @@ int main()
             cin >> ch;
 
             ll.insert(it, ch);
+            it++;
         }
         else if(query == 'D')
         {
