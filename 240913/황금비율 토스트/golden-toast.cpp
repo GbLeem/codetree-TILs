@@ -47,12 +47,13 @@ int main()
                 ll.erase(it);
         }
     }
-    
 
-    for(const auto & l : ll)
+    for(list<char>::iterator i = ll.begin(); i != ll.end(); ++i)
     {
-        cout<<l;
+        cout << *i;
     }
+    
+    
 
     return 0;
 }
