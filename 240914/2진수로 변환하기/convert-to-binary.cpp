@@ -8,13 +8,13 @@ int main()
 {
     int n;
     cin >> n;
-
+    s.resize(n+2);
     while(1)
     {
         if(n == 1)
             break;
         s.push(n % 2);
-        n/=2;        
+        n /= 2;        
     }    
     s.push(1);
 
