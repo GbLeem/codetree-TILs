@@ -7,6 +7,7 @@ int main()
     int m1, d1, m2, d2;
     int days[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     string weeks[7] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+    string weeksback[7] = {"Sun", "Sat", "Fri", "Thu", "Wed", "Tue", "Mon"};
     int elapsedDays = 0;
     bool backTime = false;
     cin >> m1 >> d1 >> m2 >> d2;
@@ -56,7 +57,7 @@ int main()
     int div = elapsedDays % 7;
 
     if(backTime)
-        cout<< weeks[div + 5];
+        cout<< weeksback[div];
     else
         cout << weeks[div];
 
