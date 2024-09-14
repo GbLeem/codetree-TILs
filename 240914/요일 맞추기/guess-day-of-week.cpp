@@ -42,7 +42,7 @@ int main()
         if(m1 == m2 && d1 == d2)
             break;
         
-        if(d1 == days[m1])
+        if(d1 > days[m1])
         {
             d1 = 1;
             m1++;
@@ -51,8 +51,10 @@ int main()
         elapsedDays++;
         d1++;        
     }    
+        
     
-    int div = elapsedDays % 7;    
+    int div = elapsedDays % 7;
+
     if(backTime)
         cout<< weeks[div + 5];
     else
