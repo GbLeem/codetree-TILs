@@ -7,8 +7,13 @@ stack<int> s;
 int main() 
 {
     int n;
-    cin >> n;
-    s.resize(n+2);
+    cin >> n;    
+    if(n == 0)
+    {
+        cout << 0;
+        return 0;
+    }
+    
     while(1)
     {
         if(n == 1)
