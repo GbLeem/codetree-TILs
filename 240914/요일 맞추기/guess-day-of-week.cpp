@@ -7,7 +7,7 @@ int main()
     int m1, d1, m2, d2;
     int days[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     string weeks[7] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-    string weeksback[7] = {"Sun", "Sat", "Fri", "Thu", "Wed", "Tue", "Mon"};
+    string weeksback[7] = {"Mon", "Sun", "Sat", "Fri", "Thu", "Wed", "Tue"};
     int elapsedDays = 0;
     bool backTime = false;
     cin >> m1 >> d1 >> m2 >> d2;
@@ -43,14 +43,15 @@ int main()
         if(m1 == m2 && d1 == d2)
             break;
         
+        elapsedDays++;
+        d1++; 
+
         if(d1 > days[m1])
         {
             d1 = 1;
             m1++;
         }    
 
-        elapsedDays++;
-        d1++;        
     }    
         
     
