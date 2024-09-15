@@ -22,21 +22,6 @@ int main()
     d[1][1] = board[1][1]; //첫번째 b
     d[1][2] = board[1][2]; //첫번째 c
     
-    //처음에 뭐 골랐는지    
-    if(d[1][1] < d[1][2])
-        first[0] = 1;
-    else
-        first[0] = 2;
-    
-    if(d[1][0] < d[1][2])
-        first[1] = 0;
-    else
-        first[1] = 2;
-
-    if(d[1][0] < d[1][1])
-        first[2] = 0;
-    else
-        first[2] = 1;
 
     for(int i = 2; i <= n; ++i)
     {
