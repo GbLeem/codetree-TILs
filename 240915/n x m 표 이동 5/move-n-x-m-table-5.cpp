@@ -18,7 +18,7 @@ int main()
         for(int x = 0; x < m; ++x)
         {
             cin >> board[x][y];
-            dist[x][y] = -1;
+            dist[x][y] = 0;
         }
     }
     
@@ -38,7 +38,7 @@ int main()
 
             if(nx < 0 || nx >= m || ny < 0 || ny >= n)
                 continue;
-            if(dist[nx][ny] >= 0 || board[nx][ny] == 0) //방문한 곳이거나, 벽일 때
+            if(dist[nx][ny] > 0 || board[nx][ny] == 0) //방문한 곳이거나, 벽일 때
                 continue;            
 
             Q.push({nx, ny});
