@@ -46,7 +46,7 @@ int main()
         }
     }
 
-    cout << dist[m-1][n-1];
+    cout << dist[n-1][m-1];
 
 
     return 0;
