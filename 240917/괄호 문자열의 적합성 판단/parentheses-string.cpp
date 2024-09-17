@@ -24,7 +24,7 @@ int main()
             else
             {
                 cout <<"No";
-                return ;
+                return 0;
             }
         }
     }
