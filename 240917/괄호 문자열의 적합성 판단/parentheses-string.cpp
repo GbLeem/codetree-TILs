@@ -3,11 +3,10 @@
 #include <stack>
 using namespace std;
 
-stack<char> st;
-
 int main() 
 {
     string str;
+    stack<char> st;
     cin >> str;
 
     for(int i = 0; i < str.size(); ++i)
@@ -22,6 +21,11 @@ int main()
             {
                 st.pop();
             }            
+            else
+            {
+                cout <<"No";
+                return ;
+            }
         }
     }
     if(st.empty())
