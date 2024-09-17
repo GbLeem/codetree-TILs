@@ -21,12 +21,7 @@ int main()
             if(st.top() == '(')
             {
                 st.pop();
-            }
-            else
-            {
-                cout<<"No";
-                return 0;
-            }
+            }            
         }
     }
     if(st.empty())
