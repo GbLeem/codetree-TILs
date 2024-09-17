@@ -19,7 +19,8 @@ int main()
         {
             if(st.top() == '(')
             {
-                st.pop();
+                if(!st.empty())
+                    st.pop();
             }            
             else
             {
