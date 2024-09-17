@@ -17,11 +17,13 @@ int main()
         }
         else // )인 경우
         {
-            if(st.top() == '(')
+            if(!st.empty())
             {
-                if(!st.empty())
+                if(st.top() == '(')
+                {
                     st.pop();
-            }            
+                }            
+            }
             else
             {
                 cout <<"No";
