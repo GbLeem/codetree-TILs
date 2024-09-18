@@ -24,7 +24,6 @@ int main()
 
         dq.pop_front();
         int temp = dq.front();
-        cout << temp <<"\n";
         dq.pop_front();
         dq.push_back(temp);
     }
