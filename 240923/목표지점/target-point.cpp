@@ -61,8 +61,8 @@ int main()
     {
         for(int x = 0; x < m; ++x)  
         {
-            if(dist[x][y] == -1)
-                cout << 0 <<" ";
+            if(board[x][y] == 0)
+                cout << 0 <<" ";                            
             else
                 cout << dist[x][y] <<" ";
         }
