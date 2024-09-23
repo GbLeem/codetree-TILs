@@ -20,7 +20,7 @@ int main()
         }
     }
 
-    sort(board+1, board+n+1);
+    sort(board+1, board+n);
 
     cout << board[n/2];
 
