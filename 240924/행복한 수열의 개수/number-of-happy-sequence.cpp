@@ -21,8 +21,8 @@ int main()
 
     while(index < n)
     {
-        int rowCount = 1;
-        int colCount = 1;
+        int rowCount = 0;
+        int colCount = 0;
 
         for(int i = 0; i < n - 1; ++i)
         {
