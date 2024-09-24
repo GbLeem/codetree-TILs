@@ -24,7 +24,7 @@ int main()
         int rowCount = 1;
         int colCount = 1;
 
-        for(int i = 0; i < n; ++i)
+        for(int i = 0; i < n - 1; ++i)
         {
             if(board[i][index] == board[i + 1][index])
                 colCount++;
@@ -40,5 +40,6 @@ int main()
     }   
 
     cout << answer;
+
     return 0;
 }
