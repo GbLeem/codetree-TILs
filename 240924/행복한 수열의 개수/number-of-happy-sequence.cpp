@@ -24,12 +24,26 @@ int main()
         int rowCount = 0;
         int colCount = 0;
 
-        for(int i = 0; i < n - 1; ++i)
+        int colbefore = board[0][index];
+        int rowbefore = board[index][0];
+
+        for(int i = 0; i < n ; ++i)
         {
-            if(board[i][index] == board[i + 1][index])
+            if(colbefore == board[i][index])
                 colCount++;
-            if(board[index][i] == board[index][i + 1])
-                rowCount++;                
+            else
+            {
+                colbefore = board[i][index];                            
+            }
+        }
+        for(int i = 0; i < n ; ++i)
+        {
+            if(rowbefore == board[index][i])
+                rowCount++;
+            else
+            {
+                rowbefore = board[index][i];                
+            }
         }
         index++;
 
