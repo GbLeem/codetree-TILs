@@ -26,16 +26,17 @@ int main()
         }
         else
         {            
-            for(int j = start + 1000; j > (start - num + 1000); --j)
+            for(int j = start + 1000 - 1; j >= (start - num) + 1000; --j)
             {
                 board[j]++;
             }                                    
             start = start - num;
         }
+        //cout <<start <<"\n";
     }
     
     int answer = 0;
-    for(int i = 0; i < 2000; ++i)
+    for(int i = 0; i <= 2000; ++i)
     {
         if(board[i] >= 2)
             answer++;        
