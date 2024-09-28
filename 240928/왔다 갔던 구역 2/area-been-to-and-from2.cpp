@@ -24,7 +24,7 @@ int main()
             }            
             start = start + num;
         }
-        else if(ch == 'L')
+        else
         {            
             for(int j = start + 1000; j > (start - num + 1000); --j)
             {
@@ -35,7 +35,7 @@ int main()
     }
     
     int answer = 0;
-    for(int i = 0; i <= 2001; ++i)
+    for(int i = 0; i < 2000; ++i)
     {
         if(board[i] >= 2)
             answer++;        
