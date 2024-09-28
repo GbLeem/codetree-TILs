@@ -17,14 +17,14 @@ int main()
         checkPoint.push_back({a, b});
     }
 
-    int dist = 0;
-    int minDist = INT_MAX;
-    pair<int, int> before = {checkPoint[0].first, checkPoint[0].second};
-
     //뺄 것
-    for(int i = 1; i < n - 1; ++i)
+    int minDist = INT_MAX;
+    
+    for(int i = 1; i < n - 1; ++i) // 1 2
     {
-        for(int j = 1 ; j < n; ++j)
+        int dist = 0;
+        pair<int, int> before = {checkPoint[0].first, checkPoint[0].second};
+        for(int j = 1 ; j < n; ++j) // 1 2 3 
         {
             if(j == i)
                 continue;
