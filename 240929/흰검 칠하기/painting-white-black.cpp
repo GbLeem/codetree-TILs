@@ -7,7 +7,7 @@ int main()
 {
     int n;
     int start = 0;
-    int MAX_N = 100;
+    int MAX_N = 100000;
     cin >> n;
 
     for (int i = 0; i < n; ++i)
