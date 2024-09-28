@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int board[102];
+int board[2002];
 
 int main() 
 {
@@ -13,33 +13,34 @@ int main()
     for(int  i = 0; i < n; ++i)
     {
         int num;
-        cin >> num;
-        string str;
-        cin >> str;
-        if(str[i] == 'R')
+        char ch;
+        cin >> num >> ch;        
+        
+        if(ch == 'R')
         {
-            for(int j = start; j <= num; ++j)
+            for(int j = start + 1000; j < (start + num + 1000); ++j)
             {
                 board[j]++;
-            }
-            start = num;
+            }            
+            start = start + num;
         }
-        else
+        else if(ch == 'L')
         {            
-            for(int j = start; j >= num; --j)
+            for(int j = start + 1000; j > (start - num + 1000); --j)
             {
                 board[j]++;
-            }
-            start = num;
+            }                                    
+            start = start - num;
         }
     }
-
+    
     int answer = 0;
-    for(int i = 0; i < 102; ++i)
+    for(int i = 0; i <= 2001; ++i)
     {
-        if(board[i] >=2)
+        if(board[i] >= 2)
             answer++;        
     }
-    cout <<answer;
+
+    cout << answer;
     return 0;
 }
