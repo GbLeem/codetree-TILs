@@ -1,46 +1,46 @@
 #include <iostream>
 using namespace std;
 
-int board[1000];
+int board[1002];
 
 int main() 
-{
-    int n, t; 
+{  
+    int n, t;
     cin >> n >> t;
 
     for(int i = 0; i < n; ++i)
     {
-        int num;
-        cin >> num;
-        if(num > t)
-            board[i] = num;    
-        else
-            board[i] = -1;    
-    }
+        cin >> board[i];
+    }   
     
     int temp = 0;
     int answer = 0;
 
-    for(int i = 1; i < n; ++i)
-    {        
-        if(board[0] > t)
-            temp = 1;
-        if(board[i] != -1 && board[i-1] != -1)
-        {            
-            if(board[i] > board[i - 1])
-            {
+    for(int i = 0; i < n; ++i)
+    {
+        if(i >= 1 && board[i] > board[i - 1])
+        {
+            if(board[i - 1] > t)
                 temp++;
-            }
             else
             {
-                answer = max(answer, temp);
+                answer = max(answer, temp);                
+                
                 if(board[i] > t)
                     temp = 1;
                 else
-                    temp = 0;
-            }                 
+                    temp = 0;    
+            }
         }
+        else
+        {
+            if(board[i] > t)
+                temp = 1;
+            else
+                temp = 0;
+        }
+        answer = max(answer, temp);
     }
-    cout << max(temp, answer);
+    cout << answer;
     return 0;
 }
