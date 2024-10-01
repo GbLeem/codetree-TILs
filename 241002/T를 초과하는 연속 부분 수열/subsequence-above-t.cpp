@@ -20,12 +20,12 @@ int main()
     {
         if(i >= 1 && board[i] > board[i - 1])
         {
-            if(board[i - 1] > t)
+            if(board[i] > t)
                 temp++;
             else
             {
                 answer = max(answer, temp);                
-                
+
                 if(board[i] > t)
                     temp = 1;
                 else
