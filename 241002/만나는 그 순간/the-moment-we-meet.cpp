@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
 
-int board1[2002];
-int board2[2002];
+int board1[1000002];
+int board2[1000002];
 
 int main() 
 {
     int n, m;
     cin >> n >> m;
         
-    int curTime = 0;
+    int curTime = 1;
     int curDist = 0;
 
     for(int i = 0; i < n; ++i)
@@ -23,23 +23,21 @@ int main()
         {
             for(int j = curTime; j < curTime + num; ++j)
             {
-                board1[j] = curDist;
-                curDist++;
+                board1[j] = ++curDist;                
             }
         }
         else //L
         {
             for(int j = curTime; j < curTime + num; ++j)
             {
-                board1[j] = curDist;
-                curDist--;
+                board1[j] = --curDist;                
             }
         
         }
         curTime = curTime + num;
     }
 
-    curTime = 0;
+    curTime = 1;
     curDist = 0;
 
     for(int i = 0; i < m; ++i)
@@ -53,25 +51,33 @@ int main()
         {
             for(int j = curTime; j < curTime + num; ++j)
             {
-                board2[j] = curDist;
-                curDist++;
+                board2[j] = ++curDist;                
             }
         }
         else //L
         {
             for(int j = curTime; j < curTime + num; ++j)
             {
-                board2[j] = curDist;
-                curDist--;
+                board2[j] = --curDist;                
             }
         
         }
         curTime = curTime + num;
     }
+    
+    // for(int i = 0; i <= 13; ++i)
+    // {
+    //     cout << board1[i] <<" ";        
+    // }
+    // cout <<'\n';
+    // for(int i = 0; i <= 13; ++i)
+    // {
+    //     cout << board2[i] <<" ";        
+    // }
 
-    for(int i = 1; i <= 2000;++i)
+    for(int i = 1; i <= 1000000;++i)
     {
-        if(board1[i] == board2[i])
+        if(board1[i] != 0 && board2[i] != 0 && board1[i] == board2[i])
         {
             cout << i;
             return 0;
