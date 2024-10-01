@@ -16,37 +16,43 @@ int main()
             board[i + 1000][j + 1000] = 1;
         }
     }
-    //(x,y)
 
+    //(x,y)
     cin >> x1 >> y1 >> x2 >> y2;
 
     for(int i = x1; i < x2; ++i)
     {
         for(int j = y1; j < y2; ++j)
         {
-            board[i + 1000][j + 1000] = 0;
+            board[i + 1000][j + 1000] = 2;
         }
-    }   
+    }
     
     int maxX = 0;
     int maxY = 0;
+    
+    for(int i = 0; i < 2000; ++i) //x축
+    {                
+        int tempX = 0;
+        bool check = false;
 
-    for(int i = 0; i <= 2000; ++i) //y축
-    {
-        for(int j = 0; j <= 2000; ++j) //x축
+        for(int j = 0; j < 2000; ++j) //y축
         {
-            if(board[i][j] == 1 && board[i][j + 1] == 1)
-            {   
-                maxY++;                
-            }
-            if(board[i][j] == 1 && board[i + 1][j] == 1)
+            if(board[i][j] == 1)
             {
-                maxX++;
-            }
-            
+                tempX++;            
+                if(!check)
+                {
+                    maxY++;
+                    check = true;
+                }
+            }                        
         }
+        if(tempX > maxX)
+            maxX = tempX;
     }
-    cout <<maxX<<"\n"<<maxY<<'\n';
+
+    //cout << maxX << "\n" << maxY << '\n';
     cout << maxX * maxY;
     return 0;
 }
