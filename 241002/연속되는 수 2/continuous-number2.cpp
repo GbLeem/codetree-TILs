@@ -13,12 +13,24 @@ int main()
         cin >> board[i];
     }
 
-    int answer = 1;
+    int maxValue = -1;
+    int temp = 1;
+    
     for(int i = 1; i < n; ++i)
-    {
-        if(board[i] != board[i -1])
-            answer++;
+    {        
+        if(board[i] == board[i -1])
+            temp++;
+        else //같지 않을때
+        {
+            if(maxValue < temp)
+                maxValue = temp;
+            temp = 1;
+            continue;            
+        }                
     }
-    cout << answer;
+    if(maxValue < temp)
+        maxValue = temp;
+    cout << maxValue;
+
     return 0;
 }
