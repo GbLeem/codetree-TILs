@@ -20,18 +20,19 @@ int main()
     {
         if(board[0] > t)
             temp = 1;
-        if(board[i] > t && board[i - 1] > t && board[i] > board[i-1])
+        if(board[i] > board[i-1])
         {
-            temp++;
-        }
-        else
-        {
-            answer = max(temp, answer);
-            if(board[i] > t)
-                temp = 1;
+            if(board[i - 1] > t)
+                temp++;
             else
-                temp = 0;
-        }
+            {
+                answer = max(answer, temp);
+                if(board[i] > t)
+                    temp = 1;
+                else
+                    temp = 0;
+            }
+        }                    
     }
     cout << max(temp, answer);
     return 0;
