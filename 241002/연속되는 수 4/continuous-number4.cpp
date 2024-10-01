@@ -22,11 +22,11 @@ int main()
             temp++;
         else
         {
-            answer = max(answer, temp);
             temp = 1;
         }
+        answer = max(answer, temp);
     }
-    cout << max(answer, temp);
+    cout << answer;
 
     return 0;
 }
