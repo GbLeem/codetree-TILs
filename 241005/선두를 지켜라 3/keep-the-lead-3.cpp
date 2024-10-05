@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int board1[1002];
-int board2[1002];
+int board1[1000002];
+int board2[1000002];
 
 int main() 
 {
