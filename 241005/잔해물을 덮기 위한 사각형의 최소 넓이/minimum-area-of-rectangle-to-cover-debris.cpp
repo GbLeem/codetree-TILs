@@ -48,6 +48,12 @@ int main()
         }
     }
 
+    if(minX == INT_MAX && minY == INT_MAX)
+    {
+        cout << 0;
+        return 0;
+    }
+
     cout << (maxX - minX + 1) * (maxY - minY + 1);
     return 0;
 }
