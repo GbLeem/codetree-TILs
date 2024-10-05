@@ -10,9 +10,13 @@ int main()
 
     d[1] = 1;
     d[2] = 1;
-    for(int i = 3; i <= 45; ++i)
+    
+    if(n > 2)
     {
-        d[n] = d[n-1] + d[n-2];
+        for(int i = 3; i <= 45; ++i)
+        {
+            d[n] = d[n-1] + d[n-2];
+        }
     }
 
     cout << d[n];
