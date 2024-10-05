@@ -11,14 +11,12 @@ int main()
     d[1] = 1;
     d[2] = 1;
     
-    if(n > 2)
+  
+    for(int i = 3; i <= 45; ++i)
     {
-        for(int i = 3; i <= 45; ++i)
-        {
-            d[n] = d[n-1] + d[n-2];
-        }
+        d[i] = d[i-1] + d[i-2]; 
     }
-
+    
     cout << d[n];
     return 0;
 }
