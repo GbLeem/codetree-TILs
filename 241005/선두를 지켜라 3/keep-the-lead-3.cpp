@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int board1[1000002];
-int board2[1000002];
+int board1[1'000'002];
+int board2[1'000'002];
 
 int main() 
 {
@@ -28,7 +28,7 @@ int main()
 
     cur = 1;
     dist = 0;
-    for(int i = 0; i < n; ++i)
+    for(int i = 0; i < m; ++i)
     {
         int v, t;
         cin >> v >> t;
@@ -42,33 +42,63 @@ int main()
     }
     
     bool first = true;
-    bool A = false;
+    int big = 0; //1은 A 2는 B 3은 같음
     int answer = 0;
 
-    for(int i = 0; i < time; ++i)
+
+    for(int i = 1; i < time; ++i)
     {
         if(first)
         {
             if(board1[i] > board2[i])            
-                A = true;
+                big = 1;
             else if(board1[i] < board2[i])
-                A = false;
+                big = 2;
 
             answer++;
             first = false;
         }
 
-        if(!first)
+        else if(!first)
         {
-            if(A && board1[i] < board2[i])
+            if(big == 1)
             {
-                answer+=2;
-                A = false;
+                if(board1[i] < board2[i])
+                {
+                    answer++;
+                    big = 2;
+                }       
+                else if(board1[i] == board2[i])
+                {
+                    answer++;
+                    big = 3;
+                }
             }
-            else if(!A && board1[i] > board2[i])
+            else if(big == 2)
             {
-                answer+=2;
-                A = true;
+                if(board1[i] > board2[i])
+                {
+                    answer++;
+                    big = 1;
+                }       
+                else if(board1[i] == board2[i])
+                {
+                    answer++;
+                    big = 3;
+                }
+            }
+            else if(big == 3)
+            {
+                if(board1[i] > board2[i])
+                {
+                    answer++;
+                    big = 1;
+                }       
+                else if(board1[i] < board2[i])
+                {
+                    answer++;
+                    big = 2;
+                }
             }
         }
     }
