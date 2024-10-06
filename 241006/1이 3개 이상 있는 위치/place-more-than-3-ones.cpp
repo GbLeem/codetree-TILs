@@ -5,6 +5,11 @@ int board[102][102];
 int dx[4] = {1,0,-1,0};
 int dy[4] = {0,1,0,-1};
 
+bool Range(int x, int y, int n)
+{
+    return (0 <= x && x < n && 0 <= y && y < n);
+}
+
 int main() 
 {
     int n;
@@ -28,8 +33,8 @@ int main()
             {
                 int nx = j + dx[dir];
                 int ny = i + dy[dir];
-
-                if(board[nx][ny] == 1)
+                
+                if(Range(i,j,n) && board[nx][ny] == 1)
                     temp++;
             }
             answer = max(answer, temp);
