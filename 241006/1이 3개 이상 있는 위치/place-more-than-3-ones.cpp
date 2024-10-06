@@ -26,8 +26,8 @@ int main()
             int temp = 0;
             for(int dir = 0; dir < 4; ++dir)
             {
-                int nx = i + dx[dir];
-                int ny = j + dy[dir];
+                int nx = j + dx[dir];
+                int ny = i + dy[dir];
 
                 if(board[nx][ny] == 1)
                     temp++;
