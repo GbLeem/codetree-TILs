@@ -31,13 +31,14 @@ int main()
             int temp = 0;
             for(int dir = 0; dir < 4; ++dir)
             {
-                int nx = j + dx[dir];
-                int ny = i + dy[dir];
+                int nx = i + dx[dir];
+                int ny = j + dy[dir];
                 
-                if(Range(i,j,n) && board[nx][ny] == 1)
+                if(Range(i, j, n) && board[nx][ny] == 1)
                     temp++;
             }
-            answer = max(answer, temp);
+            if(temp >= 3)
+                answer++;            
         }
     }
     cout << answer;
