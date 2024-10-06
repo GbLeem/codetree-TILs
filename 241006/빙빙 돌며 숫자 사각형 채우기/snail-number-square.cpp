@@ -7,7 +7,7 @@ int dy[4] = {1, 0, -1, 0};
 
 bool InRange(int x, int y, int n, int m)
 {
-    return (0 <= x && x < n && 0 <= y && y < m);
+    return (0 <= x && x < m && 0 <= y && y < n);
 }
 
 int main() 
