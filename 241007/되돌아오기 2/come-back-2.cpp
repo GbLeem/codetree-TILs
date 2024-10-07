@@ -24,7 +24,7 @@ int main()
         }
         else if(str[i] == 'L')
         {
-            dir = (3 - dir) % 4;
+            dir = (dir + 3) % 4;
         }
         else if(str[i] == 'R')
         {
