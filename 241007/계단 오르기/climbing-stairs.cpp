@@ -15,7 +15,7 @@ int main()
     
     for(int i = 4; i <= n; ++i)
     {
-        d[i] = d[i-2] + d[i-3];
+        d[i] = (d[i-2] + d[i-3]) % 10007;
     }
 
     cout << d[n];
