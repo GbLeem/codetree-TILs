@@ -31,7 +31,7 @@ int main()
     board[cur.first][cur.second] = dist;
     dist++;
 
-    for (int i = 0; i < n * n - 1; i++)
+    for (int i = 0; i < n * n; i++)
     {
         for (int j = 0; j < 2; ++j)
         {
