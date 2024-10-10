@@ -23,8 +23,11 @@ int main()
         if(cur.first + dx[dir] > n - 1 || cur.second + dy[dir]> m - 1 || cur.first + dx[dir] < 0 || cur.second + dy[dir] < 0)
         {
             dir = (dir + 1) % 4;
-
         }   
+        if(board[cur.first + dx[dir]][cur.second + dy[dir]] != 0)
+        {
+            dir = (dir + 1)  %4;
+        }
         cur.first = cur.first + dx[dir];
         cur.second = cur.second + dy[dir]; 
 
