@@ -20,7 +20,7 @@ int main()
 
     for(int i = 0; i < n * m - 1; ++i)
     {        
-        if(cur.first + dx[dir] > n - 1 || cur.second + dy[dir]> m - 1)
+        if(cur.first + dx[dir] > n - 1 || cur.second + dy[dir]> m - 1 || cur.first + dx[dir] < 0 || cur.second + dy[dir] < 0)
         {
             dir = (dir + 1) % 4;
 
