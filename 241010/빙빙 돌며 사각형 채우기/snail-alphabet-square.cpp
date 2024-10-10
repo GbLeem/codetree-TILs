@@ -32,11 +32,11 @@ int main()
             dir = (dir + 1) % 4; //90도 회전
 
         index++;
+        index %= 26;
         cur.first = cur.first + dx[dir];
         cur.second = cur.second + dy[dir];
         board[cur.first][cur.second] = alpha[index];
 
-        index %= 26;
     }
 
     for(int i = 0; i < n; ++i)
