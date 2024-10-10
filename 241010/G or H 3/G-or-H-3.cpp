@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-char board[10002];
+char board[20002];
 
 int main() 
 {
@@ -21,10 +21,15 @@ int main()
 
         board[num] = ch;
     }    
+    //cout << maxNum;
 
     int answer = 0;
 
-    for(int i = 1; i <= maxNum - k; ++i)
+    int size = maxNum - k;
+    if(size < 0)
+        size = maxNum;
+
+    for(int i = 1; i <= size; ++i)
     {
         int temp = 0;
         for(int j = i; j <= i + k; ++j) // 1 ~ 7
