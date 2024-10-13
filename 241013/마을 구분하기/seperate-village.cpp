@@ -6,8 +6,8 @@ using namespace std;
 int board[30][30];
 int vis[30][30];
 int n;
-int dx[2] = {0, 1};
-int dy[2] = {1, 0};
+int dx[4] = {0, 1, 0, -1};
+int dy[4] = {1, 0, -1 ,0};
 vector<int> vec;
 int cnt = 0;
 int temp = 1;
@@ -30,7 +30,7 @@ void DFS(int x, int y)
 {
     vis[x][y] = 1;
 
-    for(int dir = 0; dir < 2; ++dir)
+    for(int dir = 0; dir < 4; ++dir)
     {
         int nx = x + dx[dir];
         int ny = y + dy[dir];
