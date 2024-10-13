@@ -59,21 +59,18 @@ int main()
     }
 
     //터지게 되는 블록 수, 최대 블록 크기
-
     for(int i = 0; i < n; ++i)
     {
         for(int j = 0; j < n; ++j)
         {
             if(!vis[i][j])
-            {
-                int data = board[i][j];
-
+            {            
                 DFS(i, j);
                 if(temp >= 4)
                 {
-                    vec.push_back(temp);                
                     cnt++;
                 }
+                vec.push_back(temp);                
                 temp = 1;                
             }
         }
