@@ -12,6 +12,7 @@ int dy[4] = {1, 0, -1, 0};
 vector<pair<int, int>> vec;
 int temp = 0;
 
+//first 가 갯수 second가 k
 bool cmp(pair<int, int> a , pair<int, int> b)
 {
     if(a.first == b.first)
@@ -92,7 +93,12 @@ int main()
         }
     }
 
+    //안전 공간이 최대
+    // for(auto v : vec)
+    // {
+    //     cout << v.first<<" "<<v.second<<"\n";
+    // }
     sort(vec.begin(), vec.end(), cmp);
-    cout << vec[vec.size() - 1].second <<" "<<vec[vec.size() - 1].first; //영역 수 & k 출력
+    cout << vec[0].second <<" "<<vec[0].first; //k부터 출력
     return 0;
 }
