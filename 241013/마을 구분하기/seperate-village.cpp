@@ -9,7 +9,7 @@ int n;
 int dx[2] = {0, 1};
 int dy[2] = {1, 0};
 vector<int> vec;
-int count = 0;
+int cnt = 0;
 int temp = 1;
 
 bool InRange(int x, int y)
@@ -63,7 +63,7 @@ int main()
         {
             if(board[i][j] == 1 && !vis[i][j])
             {
-                count++;
+                cnt++;
                 DFS(i, j);
                 vec.push_back(temp);
                 temp = 1;
@@ -71,9 +71,9 @@ int main()
         }
     }
 
-    cout << count <<"\n";
+    cout << cnt <<"\n";
     sort(vec.begin(), vec.end());
-    
+
     for(auto v : vec)
         cout << v <<"\n"; 
     return 0;
