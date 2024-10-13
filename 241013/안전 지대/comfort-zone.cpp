@@ -12,6 +12,12 @@ int dy[4] = {1, 0, -1, 0};
 vector<pair<int, int>> vec;
 int temp = 0;
 
+bool cmp(pair<int, int> a , pair<int, int> b)
+{
+    if(a.first == b.first)
+        return a.second < b.second;
+    return a.first > b.first;
+}
 bool InRange(int x, int y)
 {
     return (0 <= x && x < n && 0 <= y && y < m);
@@ -86,7 +92,7 @@ int main()
         }
     }
 
-    sort(vec.begin(), vec.end());
-    cout << vec[vec.size()- 1].second <<" "<<vec[vec.size()- 1].first; //영역 수
+    sort(vec.begin(), vec.end(), cmp);
+    cout << vec[vec.size() - 1].second <<" "<<vec[vec.size() - 1].first; //영역 수 & k 출력
     return 0;
 }
