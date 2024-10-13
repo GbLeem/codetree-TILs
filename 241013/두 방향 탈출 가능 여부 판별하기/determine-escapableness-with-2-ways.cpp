@@ -25,14 +25,15 @@ bool CanGo(int x, int y)
 
 void DFS(int x, int y)
 {
+    vis[x][y] = 1;
+
     for(int dir = 0; dir < 2; ++dir)
     {
         int nx = x + dx[dir];
         int ny = y + dy[dir];
 
-        if(InRange(x, y))
+        if(CanGo(x, y))
         {
-            vis[nx][ny] = 1;
             DFS(nx, ny);
         }
     }
