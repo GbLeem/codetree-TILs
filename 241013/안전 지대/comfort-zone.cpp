@@ -64,7 +64,7 @@ int main()
     }
     
     //물의 높이
-    for(int k = 1; k < maxNum; ++k)
+    for(int k = 1; k <= maxNum; ++k)
     {                 
         for(int i = 0; i < n; ++i)
         {
