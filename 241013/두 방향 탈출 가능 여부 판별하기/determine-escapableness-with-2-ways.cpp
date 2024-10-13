@@ -11,7 +11,7 @@ int n, m;
 
 bool InRange(int x, int y)
 {
-    return (0 <= x && x < n && 0 <= y && y < n);
+    return (0 <= x && x < n && 0 <= y && y < m);
 }
 
 bool CanGo(int x, int y)
@@ -31,7 +31,10 @@ void DFS(int x, int y)
         int ny = y + dy[dir];
 
         if(InRange(x, y))
+        {
+            vis[nx][ny] = 1;
             DFS(nx, ny);
+        }
     }
 }
 
