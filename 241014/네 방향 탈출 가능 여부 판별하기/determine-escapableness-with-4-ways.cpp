@@ -25,7 +25,7 @@ void BFS()
 
             if(nx < 0 || nx >= n || ny < 0 || ny >= m)
                 continue;
-            if(board[nx][ny] == 0 || vis[nx][ny] == 1)
+            if(vis[nx][ny] == 1 || board[nx][ny] == 0) //뱀이 있거나 이미 방문함
                 continue;
             Q.push({nx, ny});
             vis[nx][ny] = 1;
