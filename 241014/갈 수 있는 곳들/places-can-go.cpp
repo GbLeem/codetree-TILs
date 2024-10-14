@@ -41,7 +41,7 @@ void BFS(int x, int y)
 int main() 
 {
     cin >> n >> k;
-    answer = k;
+
     for(int i = 0; i < n; ++i)
     {
         for(int j = 0; j < n; ++j)
@@ -54,8 +54,11 @@ int main()
     {
         int r, c;
         cin >> r >> c;
-
-        BFS(r - 1, c - 1);
+        if(!vis[r-1][c-1])
+        {
+            answer++;
+            BFS(r - 1, c - 1);
+        }
     }
     
     cout << answer;
