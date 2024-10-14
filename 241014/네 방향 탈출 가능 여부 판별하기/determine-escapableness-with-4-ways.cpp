@@ -11,6 +11,20 @@ int dy[4] = {1,0,-1,0};
 queue<pair<int, int>> Q;
 int n, m;
 
+bool InRange(int x, int y)
+{
+    return (0 <= x && x < n && 0 <= y && y < m);
+}
+
+bool CanGo(int x, int y)
+{
+    if(!InRange(x,y))
+        return false;
+    if(vis[x][y] || board[x][y] == 0)
+        return false;
+    return true;
+}
+
 void BFS()
 {
     while(!Q.empty())
@@ -23,12 +37,11 @@ void BFS()
             int nx = cur.first + dx[dir];
             int ny = cur.second + dy[dir];
 
-            if(nx < 0 || nx >= n || ny < 0 || ny >= m)
-                continue;
-            if(vis[nx][ny] == 1 || board[nx][ny] == 0) //뱀이 있거나 이미 방문함
-                continue;
-            Q.push({nx, ny});
-            vis[nx][ny] = 1;
+            if(CanGo(nx, ny))
+            {
+                Q.push({nx, ny});
+                vis[nx][ny] = 1;
+            }
         }
     }
 }
