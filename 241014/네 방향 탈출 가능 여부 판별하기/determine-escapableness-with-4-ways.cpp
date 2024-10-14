@@ -29,7 +29,7 @@ void BFS()
 {
     while(!Q.empty())
     {
-        auto cur = Q.front();
+        pair<int,int> cur = Q.front();
         Q.pop();
 
         for(int dir = 0; dir < 4; ++dir)
