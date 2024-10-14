@@ -1,70 +1,65 @@
 #include <iostream>
 #include <queue>
-
-#define MAX_N 100
-#define MAX_M 100
-
 using namespace std;
 
-// 전역 변수 선언:
+int board[100][100];
+bool vis[100][100];
+
+int dx[4] = {0,1,0,-1};
+int dy[4] = {1,0,-1,0};
+
+queue<pair<int, int>> Q;
 int n, m;
-int a[MAX_N][MAX_M];
 
-// bfs에 필요한 변수들 입니다.
-queue<pair<int, int> > q;
-bool visited[MAX_N][MAX_M];
-
-bool InRange(int x, int y) {
-    return 0 <= x && x < n && 0 <= y && y < m;
+bool InRange(int x, int y)
+{
+    return (0 <= x && x < n && 0 <= y && y < m);
 }
 
-bool CanGo(int x, int y) {
-    return InRange(x, y) && a[x][y] && !visited[x][y];
+bool CanGo(int x, int y)
+{
+    return InRange(x, y) && board[x][y] && !vis[x][y];
 }
 
-void BFS() {
-    // queue에 남은 것이 없을때까지 반복합니다.
-    while(!q.empty()) {
-        // queue에서 가장 먼저 들어온 원소를 뺍니다.
-        pair<int, int> curr_pos = q.front();
-        int x = curr_pos.first, y = curr_pos.second;
-        q.pop();
+void BFS()
+{
+    while(!Q.empty())
+    {
+        auto cur = Q.front();
+        Q.pop();
 
-        int dx[4] = {1, -1, 0, 0};
-        int dy[4] = {0, 0, 1, -1};
+        for(int dir = 0; dir < 4; ++dir)
+        {
+            int nx = cur.first + dx[dir];
+            int ny = cur.second + dy[dir];
 
-        // queue에서 뺀 원소의 위치를 기준으로 4방향을 확인해봅니다.
-        for(int dir = 0; dir < 4; dir++) {
-            int nx = x + dx[dir], ny = y + dy[dir];
-
-            // 아직 방문한 적이 없으면서 갈 수 있는 곳이라면
-            // 새로 queue에 넣어주고 방문 여부를 표시해줍니다. 
-            if(CanGo(nx, ny)){
-                q.push(make_pair(nx, ny));
-                visited[nx][ny] = true;
+            if(CanGo(nx, ny))
+            {
+                Q.push({nx, ny});
+                vis[nx][ny] = 1;
             }
         }
     }
-
 }
 
-int main() {
-    // 입력:
+int main() 
+{
     cin >> n >> m;
 
-    for(int i = 0; i < n; i++)
-        for(int j = 0; j < m; j++)
-            cin >> a[i][j];
+    for(int i = 0; i < n; ++i)
+    {
+        for(int j = 0; j < n; ++j)
+        {
+            cin >> board[i][j];
+        }
+    }
+
+    Q.push({0,0});
+    vis[0][0] = 1;
+
+    BFS();    
+
+    cout << vis[n - 1][m - 1];
     
-    // bfs를 이용해 최소 이동 횟수를 구합니다.
-    // 시작점을 queue에 넣고 시작합니다.
-    q.push(make_pair(0, 0));
-    visited[0][0] = true;
-
-    BFS();
-
-    // 우측 하단을 방문한 적이 있는지 여부를 출력합니다.
-    cout << visited[n - 1][m - 1];
-
-    return 0;
+    return 0;   
 }
