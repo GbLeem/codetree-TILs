@@ -4,6 +4,7 @@ using namespace std;
 
 int board[102][102];
 int vis[102][102];
+
 int dx[4] = {0,1,0,-1};
 int dy[4] = {1,0,-1,0};
 
@@ -22,9 +23,9 @@ void BFS()
             int nx = cur.first + dx[dir];
             int ny = cur.second + dy[dir];
 
-            if(board[nx][ny] == 0 || vis[nx][ny] == 1)
-                continue;
             if(nx < 0 || nx > n || ny < 0 || ny > m)
+                continue;
+            if(board[nx][ny] == 0 || vis[nx][ny] == 1)
                 continue;
             Q.push({nx, ny});
             vis[nx][ny] = 1;
