@@ -6,6 +6,7 @@ using namespace std;
 vector<pair<int, int>> vec;
 vector<int> ans;
 int n;
+int isused[1002];
 
 void Print()
 {
@@ -42,11 +43,17 @@ void Choose(int cur)
 		return;
 	}
 
+	//여기서 중복 제거
 	for(int i = 0; i < vec.size(); ++i)
 	{
-		ans.push_back(i);
-		Choose(cur + 1);
-		ans.pop_back();
+		if(!isused[i])
+		{
+			ans.push_back(i);
+			isused[i] = 1;
+			Choose(cur + 1);
+			isused[i] = 0;
+			ans.pop_back();
+		}
 	}
 }
 
