@@ -7,7 +7,7 @@ int n;
 vector<pair<int, int>> vec;
 vector<int> ans;
 int isused[1002];
-int answer = 0;
+int answer = 1;
 
 void Print()
 {
