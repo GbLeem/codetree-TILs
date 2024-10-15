@@ -1,78 +1,74 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include<algorithm>
 using namespace std;
 
+int n;
 vector<pair<int, int>> vec;
 vector<int> ans;
-int n;
-int isused[20002];
+int isused[1002];
+int answer = 0;
 
 void Print()
 {
-	for(auto a : ans)
+	for (auto a : ans)
 	{
-		cout << a <<" ";
+		cout << a << " ";
 	}
-	cout <<"\n";
+	cout << "\n";
 }
 
 int Count()
 {
-	int cnt = 1;
-	for(int i = 0; i < ans.size(); ++i)
+	int temp = 1;
+	for (int i = 0; i < ans.size() - 1; ++i)
 	{
-		int nextx1 = vec[ans[i + 1]].first;		
 		int x2 = vec[ans[i]].second;
+		int newx1 = vec[ans[i + 1]].first;
 
-		if(nextx1 > x2)
-		{
-			cnt++;
-		}
-	}	
-	return cnt;
+		if (newx1 > x2)
+			temp++;
+	}
+	return temp;
 }
-int answer = 0;
+
 void Choose(int cur)
 {
-	if(cur == n + 1)
-	{
-		//Print();
+	if (ans.size() >= 2)
 		answer = max(answer, Count());
-		return;
-	}
 
-	//여기서 중복 제거
-	for(int i = 0; i < vec.size(); ++i)
+	for (int i = 0; i < n; ++i)
 	{
-		if(!isused[i])
+		//중복 제거
+		if (!isused[i])
 		{
-			ans.push_back(i);
-			isused[i] = 1;
-			Choose(cur + 1);
-			isused[i] = 0;
-			ans.pop_back();
+			if (ans.empty() || i > ans.back())
+			{
+				ans.push_back(i);
+				isused[i] = 1;
+				Choose(cur + 1);
+				ans.pop_back();
+				isused[i] = 0;
+			}
 		}
 	}
 }
 
-int main() 
+int main()
 {
-    cin >> n;
-
-	for(int i = 0; i < n; ++i)
+	cin >> n;
+	for (int i = 0; i < n; ++i)
 	{
 		int x1, x2;
 		cin >> x1 >> x2;
 
-		vec.push_back({x1, x2});
+		vec.push_back({ x1, x2 });
 	}
 
 	sort(vec.begin(), vec.end());
 
 	Choose(1);
 
-	cout<<answer;
-
-    return 0;
+	cout << answer;
+	return 0;
 }
