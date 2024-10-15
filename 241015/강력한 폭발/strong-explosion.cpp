@@ -16,9 +16,12 @@ bool InRange(int x, int y)
 
 int Count()
 {
-	int tempBoard[22][22];
+	int tempBoard[25][25];
 	int temp = 0;
 
+    for(int i = 0; i < 25; ++i)    
+        fill(tempBoard[i], tempBoard[i] + 25, 0);
+    
 	for (int i = 0; i < pos.size(); ++i) //모든 위치
 	{		
 		int x = pos[i].first;
@@ -76,7 +79,7 @@ void Choose(int cur)
 {
 	if (cur == bomb + 1)
 	{
-		answer = max(answer, Count());				
+		answer = max(answer, Count());				    
 		return;
 	}
 	
