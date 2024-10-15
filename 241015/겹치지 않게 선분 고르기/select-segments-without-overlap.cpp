@@ -6,7 +6,7 @@ using namespace std;
 vector<pair<int, int>> vec;
 vector<int> ans;
 int n;
-int isused[1002];
+int isused[20];
 
 void Print()
 {
