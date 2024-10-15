@@ -6,7 +6,7 @@ using namespace std;
 vector<pair<int, int>> vec;
 vector<int> ans;
 int n;
-int isused[20];
+int isused[20002];
 
 void Print()
 {
@@ -22,7 +22,7 @@ int Count()
 	int cnt = 1;
 	for(int i = 0; i < ans.size(); ++i)
 	{
-		int nextx1 = vec[ans[i+1]].first;		
+		int nextx1 = vec[ans[i + 1]].first;		
 		int x2 = vec[ans[i]].second;
 
 		if(nextx1 > x2)
@@ -30,7 +30,6 @@ int Count()
 			cnt++;
 		}
 	}	
-	//cout << cnt <<"\n";
 	return cnt;
 }
 int answer = 0;
@@ -69,7 +68,7 @@ int main()
 		vec.push_back({x1, x2});
 	}
 
-	//sort(vec.begin(), vec.end());
+	sort(vec.begin(), vec.end());
 
 	Choose(1);
 
