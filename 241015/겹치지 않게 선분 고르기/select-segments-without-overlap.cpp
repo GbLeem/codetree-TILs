@@ -69,7 +69,7 @@ int main()
 		vec.push_back({x1, x2});
 	}
 
-	sort(vec.begin(), vec.end());
+	//sort(vec.begin(), vec.end());
 
 	Choose(1);
 
