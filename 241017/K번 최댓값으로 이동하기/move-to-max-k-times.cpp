@@ -35,8 +35,8 @@ void Choose(int x, int y, int cnt)
     int value = board[x][y]; //처음 시작값
 
     maxValue = 0;
-    aX = 0;
-    aY = 0;
+    aX = x;
+    aY = y;
 
     while(!Q.empty())
     {
@@ -57,22 +57,46 @@ void Choose(int x, int y, int cnt)
             //새롭게 갈 곳
             Q.push({nx, ny});
             vis[nx][ny] = 1;
-
-            //기존에 최대 값보다 큰 값이라면 리셋
-            maxValue = max(maxValue, board[nx][ny]);          
+            
+            //처음
             if(maxValue == 0)
             {
                 aX = nx;
                 aY = ny;
-            }            
-            //새로운 큰 값이 나타났다면, 
+                maxValue = board[nx][ny];
+                //cout <<"first" <<aX<<" "<<aY<<"\n";
+            }                        
             else if(maxValue == board[nx][ny])
             {
+                //행이 같으면
+                if(aX == nx)
+                {
+                    //열로
+                    if(aY > ny)
+                    {
+                        aX = nx;
+                        aY = ny;
+                    }
+                }
+                //기존 행보다 작은 행일때
+                else if(aX > nx)
+                {
+                    aX = nx;    
+                    aY = ny;
+                }                
+            }   
+            else if(maxValue < board[nx][ny])
+            {   
                 aX = nx;
                 aY = ny;
-            }   
+                maxValue = board[nx][ny];
+            }            
+            //maxValue = max(maxValue, board[nx][ny]);          
         }
-    }    
+        if(maxValue == 0)
+            return;    
+    }  
+    
     //cout << maxValue << " "<<aX + 1<<" "<<aY + 1<<"\n";
 
     Choose(aX, aY, cnt + 1);
