@@ -5,7 +5,6 @@ using namespace std;
 
 int n, k, m; //격자, 시작점 수, 치워야 할 돌
 int board[102][102];
-int tempBoard[102][102];
 int vis[102][102];
 vector<pair<int, int>> start;
 
@@ -16,11 +15,15 @@ int answer = 0;
 
 int BFS(int x, int y)
 {
-    int cnt = 1;
+    int cnt = 0;
     queue<pair<int, int>> Q;
 
     Q.push({ x,y });
-    vis[x][y] = 1;
+    if(!vis[x][y])
+    {
+        vis[x][y] = 1;
+        cnt++;
+    }
 
     while (!Q.empty())
     {
@@ -43,7 +46,6 @@ int BFS(int x, int y)
         }
     }
 
-
     return cnt;
 }
 
@@ -56,19 +58,22 @@ void Choose(int cur)
         //Print();
 
         //최댓값 구하기
+        int temp = 0;
         for (int i = 0; i < k; ++i)
         {
-            answer = max(answer, BFS(start[i].first, start[i].second));
-
-            for (int j = 0; j < n; ++j)
-            {
-                for (int k = 0; k < n; ++k)
-                {
-                    vis[j][k] = 0;
-                }
-            }
+            //cout << BFS(start[i].first, start[i].second) <<"\n";            
+            temp += BFS(start[i].first, start[i].second);            
         }       
-      
+        answer = max(answer, temp);
+
+        for (int j = 0; j < n; ++j)
+        {
+            for (int k = 0; k < n; ++k)
+            {
+                vis[j][k] = 0;
+            }
+        }
+        
         return;
     }
 
@@ -97,7 +102,6 @@ int main()
         for (int j = 0; j < n; ++j)
         {
             cin >> board[i][j];
-            tempBoard[i][j] = board[i][j]; //새로운 Choose할때 board 초기화
         }
     }
 
