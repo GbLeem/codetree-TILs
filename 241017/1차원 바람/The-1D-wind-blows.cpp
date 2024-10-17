@@ -90,7 +90,6 @@ int main()
         //i == 0 일때만 위아래 체크
 
         Move(--r, ch);
-        Print();
 
         int tempR = r;
         char tempCh = ch;
