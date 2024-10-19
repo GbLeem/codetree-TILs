@@ -34,10 +34,10 @@ int main()
     {
         for(int j = 2; j <= n; ++j)
         {   
-            d[i][j] = (min(d[i-1][j], d[i][j-1]), board[i][j]);
+            d[i][j] = min(min(d[i-1][j], d[i][j-1]), board[i][j]);
             if(i == n && j == n)
             {
-                d[i][j] = max(d[i-1][j], d[i][j-1]);
+                d[i][j] = min(max(d[i-1][j], d[i][j-1]),board[i][j]); 
             }
         }
     }
