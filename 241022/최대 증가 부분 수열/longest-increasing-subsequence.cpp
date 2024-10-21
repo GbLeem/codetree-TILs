@@ -2,8 +2,8 @@
 #include <climits>
 using namespace std;
 
-int board[102];
-int d[102];
+int board[1002];
+int d[1002];
 int n;
 
 int main() 
