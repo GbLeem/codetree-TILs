@@ -13,10 +13,10 @@ int main()
     for(int i = 1; i <= n; ++i)
     {
         cin >> board[i];
-        d[i] = INT_MIN;
+        d[i] = 1;
     }
 
-    d[1] = 1;
+    //d[1] = 1;
     //가장 긴 증가 부분 수열의 길이    
     //i에 도착했을 때 가장 긴 증가 수열의 길이
     for(int i = 2; i <= n; ++i)
