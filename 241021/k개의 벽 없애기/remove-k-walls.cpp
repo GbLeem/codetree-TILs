@@ -10,8 +10,20 @@ int vis[102][102];
 int r1, c1, r2, c2;
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
-int answer = -1;
+int answer = INT_MAX;
 
+void Print()
+{
+    for(int i = 0; i < n; ++i)
+    {
+        for(int j = 0; j < n; ++j)
+        {
+            //cout << vis[i][j]<<" ";
+            cout << board[i][j]<<" ";
+        }
+        cout <<"\n";
+    }
+}
 void BFS(int x, int y)
 {
     for(int i = 0 ; i < n; ++i)
@@ -40,11 +52,13 @@ void BFS(int x, int y)
             vis[nx][ny] = vis[cur.first][cur.second] + 1;
         }
     }
+    // Print();
+    // cout <<"\n";
 }
 
 void Check()
 {
-    //못가는 경우
+    //도착할 수 있는 경우
     if(vis[r2 - 1][c2 - 1] != -1)
     {
         answer = min(answer, vis[r2 - 1][c2 - 1]);
@@ -57,7 +71,8 @@ void Choose(int cur)
     {
         BFS(r1 - 1, c1 - 1);
         Check();
-
+        // Print();
+        // cout <<"\n";    
         return ;
     }
 
@@ -68,9 +83,9 @@ void Choose(int cur)
 
         if(board[x][y] == 1) //벽이면
         {
-            board[x][y] = 1;
-            Choose(cur + 1);
             board[x][y] = 0;
+            Choose(cur + 1);
+            board[x][y] = 1;
         }
     }
 }
@@ -90,7 +105,7 @@ int main()
 
     Choose(1);
 
-    if(answer != -1)
+    if(answer != INT_MAX)
         cout << answer;
     else
         cout << -1;
