@@ -23,7 +23,7 @@ int main()
         
         for(int nxt : {cur -1, cur + 1, cur * 2, cur * 3})
         {
-            if(nxt < 0 || nxt > 100000)
+            if(nxt < 0 || nxt > 1'000'000)
                 continue;
             if(vis[nxt] != -1)
                 continue;
