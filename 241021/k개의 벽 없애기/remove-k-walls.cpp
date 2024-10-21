@@ -10,7 +10,7 @@ int vis[102][102];
 int r1, c1, r2, c2;
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
-int answer = INT_MAX;
+int answer = -1;
 
 void BFS(int x, int y)
 {
@@ -90,7 +90,7 @@ int main()
 
     Choose(1);
 
-    if(answer != 0)
+    if(answer != -1)
         cout << answer;
     else
         cout << -1;
