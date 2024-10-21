@@ -8,6 +8,7 @@ int d[1002];
 int main() 
 {
     cin >> n;
+
     for(int i = 1; i <= n; ++i)
     {
         cin >> board[i];
@@ -16,7 +17,7 @@ int main()
 
     for(int i = 2; i <= n; ++i)
     {
-        for(int j = 1; j < n; ++j)
+        for(int j = 1; j < i; ++j)
         {
             if(board[i] < board[j]) //현재가 값이 더 작으면
             {
