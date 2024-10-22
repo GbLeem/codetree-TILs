@@ -28,16 +28,12 @@ int main()
         for(int j = 1; j <= m; ++j)
         {
             cin >> board[i][j];
+            d[i][j] = 0;
         }
     }
 
     //i j 위치에 왔을때 최대 칸의 수
     d[1][1] = 1;
-
-    // for(int i = 1; i <= n; ++i)
-    //     d[i][1] = 1;
-    // for(int i = 1; i <= m; ++i)
-    //     d[1][i] = 1;
 
     //현재위치
     for(int i = 1; i <= n; ++i)
@@ -55,11 +51,7 @@ int main()
                     }
                 }
             }
-
-            //Print();
-            //cout << "\n";
         }
-        //cout<<"==\n";
     }
 
     //Print();
