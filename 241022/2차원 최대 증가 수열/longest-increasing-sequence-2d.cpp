@@ -47,7 +47,8 @@ int main()
             {
                 for(int l = 1; l < j; ++l)
                 {             
-                    if(board[i][j] == INT_MIN)
+                    //도달하는 것이 불가능한 경우
+                    if(d[k][l] == INT_MIN)
                         continue;
                     
                     if(board[i][j] > board[k][l] && i > k && j > l)
