@@ -35,7 +35,7 @@ int main()
         for(int j = 0; j < i; ++j)
         {
             //i+1 번째를 선택했을 때
-            if(vec[i].first >= vec[j].second)
+            if(vec[i].first > vec[j].second)
             {
                 d[i] = max(d[i], d[j] + 1);
             }
