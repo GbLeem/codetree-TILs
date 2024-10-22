@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 int n, m;
@@ -28,7 +29,7 @@ int main()
         for(int j = 1; j <= m; ++j)
         {
             cin >> board[i][j];
-            d[i][j] = 0;
+            d[i][j] = INT_MIN;
         }
     }
 
@@ -46,14 +47,13 @@ int main()
             {
                 for(int l = 1; l < j; ++l)
                 {             
-                    if(board[i][j] > start)
+                    if(board[i][j] == INT_MIN)
+                        continue;
+                    
+                    if(board[i][j] > board[k][l] && i > k && j > l)
                     {
-                        if(board[i][j] > board[k][l] && i > k && j > l)
-                        {
-                            d[i][j] = max(d[i][j], d[k][l] + 1);
-                        }
-
-                    }   
+                        d[i][j] = max(d[i][j], d[k][l] + 1);
+                    }                       
                 }
             }
         }
