@@ -33,22 +33,27 @@ int main()
     }
 
     //i j 위치에 왔을때 최대 칸의 수
-    d[1][1] = 1;
+    d[1][1] = 1; //시작점을 1
+    int start = board[1][1];
 
-    //현재위치
+    //현재 위치
     for(int i = 1; i <= n; ++i)
     {
         for(int j = 1; j <= m; ++j)
         {
-            //현재 위치보다 작은 것들
+            //현재 위치보다 작은 것들 체크
             for(int k = 1; k < i; ++k)
             {
                 for(int l = 1; l < j; ++l)
-                {
-                    if(board[i][j] > board[k][l] && i > k && j > l)
+                {             
+                    if(board[i][j] > start)
                     {
-                        d[i][j] = max(d[i][j], d[k][l] + 1);
-                    }
+                        if(board[i][j] > board[k][l] && i > k && j > l)
+                        {
+                            d[i][j] = max(d[i][j], d[k][l] + 1);
+                        }
+
+                    }   
                 }
             }
         }
