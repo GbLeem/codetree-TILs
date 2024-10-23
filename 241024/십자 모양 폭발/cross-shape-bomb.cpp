@@ -57,7 +57,7 @@ int main()
     //Print();
     for(int col = 0; col < n; ++col)
     {   
-        int temp[102];
+        int temp[202];
         int tempRow = 0;
         //처리
         for(int row = n-1; row >=0; --row)
