@@ -7,7 +7,7 @@ using namespace std;
 //n개 종류
 int n, m;
 int board[102];
-int d[102];
+int d[10002];
 
 void Print()
 {
