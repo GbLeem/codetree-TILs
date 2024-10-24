@@ -3,37 +3,49 @@ using namespace std;
 
 int n, m;
 int board[102];
-int board2[102];
-int Bsize = 0;
-bool change = false;
-int cnt = 1;
-int idx = 0;
-bool first = true;
+
+void Bomb(int st, int en)
+{
+    int temp[102];
+    int tempcur = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        if (st <= i && i < en)
+            continue;
+        temp[tempcur] = board[i];
+        tempcur++;
+    }
+
+    for (int i = 0; i < n; ++i)
+    {
+        board[i] = 0;
+    }
+
+    n = tempcur;
+    for (int i = 0; i < n; ++i)
+    {
+        board[i] = temp[i];
+    }
+}
 
 int main()
 {
     cin >> n >> m;
-
     for (int i = 0; i < n; ++i)
     {
-        cin >> board2[i];
-        Bsize++;
-    }
-    for (int i = 0; i < n; ++i)
-    {
-        board[i] = board2[n - i - 1];
+        cin >> board[n - i - 1]; //2 1 3 2 2 3 3 3 2
     }
 
     while (1)
     {
-        change = false;
-        cnt = 1;
-        idx = 0;
-        first = true;
+        int cnt = 1;
+        int idx = 0;
+        bool first = true;
+        bool change = false;
 
-        for (int i = 0; i < Bsize - 1; ++i)
+        for (int i = 0; i < n; ++i)
         {
-            //같은 것 발견
             if (board[i] == board[i + 1])
             {
                 cnt++;
@@ -43,68 +55,33 @@ int main()
                     first = false;
                 }
             }
-            else
+            else if (board[i] != board[i + 1])
             {
-                //터지는 경우
                 if (cnt >= m)
                 {
+                    Bomb(idx, idx + cnt); //i <= x < i + cnt            
                     change = true;
-                    int temp[102]; //복사용 배열
-                    int tempIdx = 0; //새로운 배열 크기
-
-                    for (int j = 0; j < Bsize; ++j)
-                    {
-                        if (idx <= j && j < idx + cnt) //1 <= j < 3
-                            continue;
-                        temp[tempIdx] = board[j];
-                        tempIdx++;
-                    }
-                    //size 갱신
-                    Bsize = tempIdx;
-
-                    //board로 copy
-                    for (int j = 0; j < Bsize; ++j)
-                    {
-                        board[j] = temp[j];
-                    }
+                    cnt = 1;
                     break;
                 }
             }
         }
-        
+        //남은 것  
+        if (cnt >= m)
+        {
+            Bomb(idx, idx + cnt);
+            break;
+        }
 
         if (!change)
             break;
     }
-    if (cnt >= m)
-    {
-        change = true;
-        int temp[102]; //복사용 배열
-        int tempIdx = 0; //새로운 배열 크기
 
-        for (int j = 0; j < Bsize; ++j)
-        {
-            if (idx <= j && j < idx + cnt) //1 <= j < 3
-                continue;
-            temp[tempIdx] = board[j];
-            tempIdx++;
-        }
-        //size 갱신
-        Bsize = tempIdx;
+    cout << n << "\n";
 
-        //board로 copy
-        for (int j = 0; j < Bsize; ++j)
-        {
-            board[j] = temp[j];
-        }
-    }
-
-    cout << Bsize << "\n";
-    for (int i = Bsize - 1; i >= 0; --i)
+    for (int i = n - 1; i >= 0; --i)
     {
         cout << board[i] << "\n";
     }
-
-
     return 0;
 }
