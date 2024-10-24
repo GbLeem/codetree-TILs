@@ -6,42 +6,56 @@ int board[102];
 
 void Bomb(int st, int en)
 {
-    int temp[102];
-    int tempcur = 0;
-
     for (int i = 0; i < n; ++i)
     {
         if (st <= i && i < en)
-            continue;
-        temp[tempcur] = board[i];
-        tempcur++;
-    }
-
-    for (int i = 0; i < n; ++i)
-    {
-        board[i] = 0;
-    }
-
-    n = tempcur;
-    for (int i = 0; i < n; ++i)
-    {
-        board[i] = temp[i];
+            board[i] = 0;        
     }
 }
 
-int main()
+bool Clear()
+{
+    int temp[102];
+    int tempcur = 0;
+    bool change = false;
+
+    for(int i = 0; i < n; ++i)
+    {
+        if(board[i] == 0)
+        {
+            change = true;
+            continue;
+        }
+        temp[tempcur] = board[i];
+        tempcur++;
+    }
+    for(int i = 0; i < n; ++i)
+    {
+        board[i] = 0;
+    }
+    n = tempcur;
+    for(int i = 0; i < n; ++i)
+    {
+        board[i] = temp[i];
+    }
+    return change;
+}
+
+int main() 
 {
     cin >> n >> m;
-    for (int i = 0; i < n; ++i)
+    for(int i = 0; i < n; ++i)
     {
-        cin >> board[n - i - 1]; //2 1 3 2 2 3 3 3 2
+        cin >> board[n - i - 1];
     }
+
     if(m == 1)
     {
-        cout <<0;
+        cout << 0;
         return 0;
     }
-    while (1)
+
+    while(1)
     {
         int cnt = 1;
         int idx = 0;
@@ -65,7 +79,9 @@ int main()
                 {
                     Bomb(idx, idx + cnt); //i <= x < i + cnt            
                     change = true;
-                    cnt = 0;                    
+                    idx = 0;
+                    cnt = 1;
+                    first = true;
                 }
                 else
                 {
@@ -75,22 +91,20 @@ int main()
                 }
             }
         }
-        //남은 것  
-        if (cnt >= m)
+        if(!Clear())
         {
-            Bomb(idx, idx + cnt);
             break;
         }
-
-        if (!change)
-            break;
     }
 
     cout << n << "\n";
 
-    for (int i = n - 1; i >= 0; --i)
+    for(int i = n-1; i >= 0; --i)
     {
-        cout << board[i] << "\n";
+        cout << board[i] <<"\n";
     }
+    
+
     return 0;
+    
 }
