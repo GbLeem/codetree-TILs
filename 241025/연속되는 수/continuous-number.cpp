@@ -42,17 +42,20 @@ int main()
             {                                
                 if(board[j] == -1)
                     continue;
+
                 else if(same == board[j])
                     tempC++;
                 
-                else
+                else //same이랑 board[j] 가 같지 않고 board[j] 가 -1이 아닐때
                 {   
                     same = board[j];
                     maxC = max(maxC, tempC);
                     tempC = 1;
-                }
-                
+                }                
             } 
+            maxC = max(maxC, tempC);
+
+            //board 원상복구
             for(int j = 0; j < n; ++j)
             {
                 board[j] = tempBoard[j];
