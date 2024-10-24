@@ -64,6 +64,12 @@ int main()
                     cnt = 0;
                     break;
                 }
+                else
+                {
+                    cnt = 1;
+                    idx = 0;
+                    first = true;
+                }
             }
         }
         //남은 것  
