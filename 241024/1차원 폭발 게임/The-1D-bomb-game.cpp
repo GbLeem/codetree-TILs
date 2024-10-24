@@ -5,6 +5,9 @@ int n, m;
 int board[102];
 int Bsize = 0;
 bool change = false;
+int cnt = 1;
+int idx = 0;
+bool first = true;
 
 int main()
 {
@@ -19,11 +22,11 @@ int main()
     while (1)
     {
         change = false;
-        int cnt = 1;
-        int idx = 0;
-        bool first = true;
+        cnt = 1;
+        idx = 0;
+        first = true;
 
-        for (int i = 0; i < Bsize; ++i)
+        for (int i = Bsize - 1; i >= 0; --i)
         {
             //같은 것 발견
             if (board[i] == board[i + 1])
@@ -59,17 +62,36 @@ int main()
                     {
                         board[j] = temp[j];
                     }
-                    cnt = 1;
-                    idx = 0;
-                    //change = false;
-                    first = false;
                     break;
                 }
             }
         }
+        
 
         if (!change)
             break;
+    }
+    if (cnt >= m)
+    {
+        change = true;
+        int temp[102]; //복사용 배열
+        int tempIdx = 0; //새로운 배열 크기
+
+        for (int j = 0; j < Bsize; ++j)
+        {
+            if (idx <= j && j < idx + cnt) //1 <= j < 3
+                continue;
+            temp[tempIdx] = board[j];
+            tempIdx++;
+        }
+        //size 갱신
+        Bsize = tempIdx;
+
+        //board로 copy
+        for (int j = 0; j < Bsize; ++j)
+        {
+            board[j] = temp[j];
+        }
     }
 
     cout << Bsize << "\n";
