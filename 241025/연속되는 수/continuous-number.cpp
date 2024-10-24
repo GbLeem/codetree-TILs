@@ -35,7 +35,7 @@ int main()
 
             ///2 7 -1 7 7 -1 7 5 7
 
-            int tempC = 0;
+            int tempC = 1;
             int same = board[0];
 
             for(int j = 0; j < n; ++j)
