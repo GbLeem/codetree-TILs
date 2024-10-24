@@ -3,6 +3,7 @@ using namespace std;
 
 int n, m;
 int board[102];
+int board2[102];
 int Bsize = 0;
 bool change = false;
 int cnt = 1;
@@ -15,8 +16,12 @@ int main()
 
     for (int i = 0; i < n; ++i)
     {
-        cin >> board[i];
+        cin >> board2[i];
         Bsize++;
+    }
+    for (int i = 0; i < n; ++i)
+    {
+        board[i] = board2[n - i - 1];
     }
 
     while (1)
@@ -26,7 +31,7 @@ int main()
         idx = 0;
         first = true;
 
-        for (int i = Bsize - 1; i >= 0; --i)
+        for (int i = 0; i < Bsize - 1; ++i)
         {
             //같은 것 발견
             if (board[i] == board[i + 1])
@@ -95,7 +100,7 @@ int main()
     }
 
     cout << Bsize << "\n";
-    for (int i = 0; i < Bsize; ++i)
+    for (int i = Bsize - 1; i >= 0; --i)
     {
         cout << board[i] << "\n";
     }
