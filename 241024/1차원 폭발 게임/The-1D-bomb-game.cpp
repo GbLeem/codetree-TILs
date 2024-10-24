@@ -61,7 +61,7 @@ int main()
                 {
                     Bomb(idx, idx + cnt); //i <= x < i + cnt            
                     change = true;
-                    cnt = 1;
+                    cnt = 0;
                     break;
                 }
             }
