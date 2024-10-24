@@ -10,11 +10,15 @@ vector<int> board;
 
 void Print()
 {
-    for(auto a : ans)
+    for(auto v : vec)
     {
-        cout << a<< " ";
+        for(auto vi : v)
+        {
+            cout << vi <<" ";
+        }
+        cout <<"\n";
     }
-    cout <<"\n";
+    cout<<"\n";
 }
 
 void Choose(int cur)
@@ -56,7 +60,7 @@ int main()
 
     for(int i = 0; i < vec.size(); ++i)
     {       
-        int same = true; 
+        int same = true;
         for(int j = 0; j < k; ++j)
         {
             if(vec[i][j] != board[j])
@@ -64,12 +68,12 @@ int main()
         }
 
         if(same)
-        {
-            if(i + 1 < vec.size() - 1)
+        {            
+            if(i + 1 <= vec.size() - 1)
             {
-                for(auto a : vec[i+1])
+                for(auto a : vec[i + 1])
                 {
-                    cout << a <<" ";
+                    cout << a << " ";
                 }
                 cout <<"\n";
                 return 0;
