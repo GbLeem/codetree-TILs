@@ -36,7 +36,11 @@ int main()
     {
         cin >> board[n - i - 1]; //2 1 3 2 2 3 3 3 2
     }
-
+    if(m == 1)
+    {
+        cout <<0;
+        return 0;
+    }
     while (1)
     {
         int cnt = 1;
