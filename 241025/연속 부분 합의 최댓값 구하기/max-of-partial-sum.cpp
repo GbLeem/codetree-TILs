@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 
@@ -18,13 +19,15 @@ int main()
         cin >> board[i];
     }
 
-    d[1] = board[1];
-    //d[2] = max(d[1] + board[1], board[1]);
+    d[1] = board[1];    
     for(int i = 2; i <= n; ++i)
     {
-        d[i] = max(d[i-1] + board[i], board[i]);
+        d[i] = max(d[i - 1] + board[i], board[i]);
     }
 
-    cout << d[n];
+    int answer = INT_MIN;
+    for(int i = 1; i <= n; ++i)
+        answer = max(answer, d[i]);
+    cout <<answer;
     return 0;
 }
