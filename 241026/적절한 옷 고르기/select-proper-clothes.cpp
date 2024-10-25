@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 //r는 i /  c은 j일 때
@@ -25,14 +26,19 @@ int main()
     //1일차
     //d[1][1] = 0;
     //d[2][1] = 5;
-    for(int i = 1; i <= n; ++i)
+    for(int i = 1; i <= m; ++i)
     {
-        if(board[i][0] <= 1)
-            d[1][i] = board[i][2];
-        else
-            d[1][i] = 0;
+        for(int j = 1; j <= n; ++j)
+        {
+            d[i][j] = INT_MIN;
+        }
     }
     
+    for(int i = 1; i <= n; ++i)
+    {
+        if(board[i][0] == 1)
+            d[1][i] = 0;
+    }
     //2일차 1을 선택했을 때는 1일차 dp값에서 
     //d[1][2] = max(board[i][2] - d[1][1])
     
@@ -43,28 +49,41 @@ int main()
         for(int j = 1; j <= n; ++j)
         {               
             //날짜 체크
-            if(board[j][0] <= i && i <= board[j][1])
+            for(int k = 1; k <= n; ++k)
             {
-                for(int k = 1; k <= n; ++k)
+                if(board[j][0] <= i && i <= board[j][1])    
                 {       
-                    if(d[i-1][k] != 0)             
-                        d[i][j] = max(abs(board[j][2] - board[k][2]), d[i][j]);                                                                    
+                    //if(d[i-1][k] != 0)             
+                    d[i][j] = max(abs(board[j][2] - board[k][2]) + d[i-1][k], d[i][j]);                                                                   
                 }
             }
         }
     }
 
-   
-    //날짜
-    for(int i = 2; i <= m; ++i)
-    {
-        int maxV = 0;
-        //종류
-        for(int j = 1; j <= n; ++j)
-        {
-            maxV = max(maxV, d[i][j]);
-        }
-        answer += maxV;
+
+    // cout << d[1][1] << "\n";
+    // cout << d[1][2] << "\n";
+    // cout << d[1][3] << "\n";
+    // cout<<"\n";
+    // cout << d[2][1] << "\n";
+    // cout << d[2][2] << "\n";
+    // cout << d[2][3] << "\n";
+    // cout<< "\n";
+    // cout << d[3][1] << "\n";
+    // cout << d[3][2] << "\n";
+    // cout << d[3][3] << "\n";
+    // cout<<"\n";
+    // cout << d[4][1] << "\n";
+    // cout << d[4][2] << "\n";
+    // cout << d[4][3] << "\n";
+    // cout<<"\n";
+    // cout << d[5][1] << "\n";
+    // cout << d[5][2] << "\n";
+    // cout << d[5][3] << "\n";
+
+    for(int i = 1; i <= n; ++i)
+    {        
+        answer = max(answer, d[m][i]);
     }
 
     cout << answer;
