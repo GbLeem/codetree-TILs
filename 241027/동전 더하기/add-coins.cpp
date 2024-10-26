@@ -13,22 +13,11 @@ int main()
         cin >> board[i];
     }
 
-    while(1)
+    for(int i = n - 1; i >= 0; --i)
     {
-        for(int i = n - 1; i >= 0; --i)
-        {
-            if(board[i] <= k)
-            {
-                k -= board[i];
-                answer++;                
-                break;
-            }
-        }
-        if(k == 0)
-            break;
-
+        answer += k/board[i];
+        k %= board[i];
     }
-
     cout << answer;
     return 0;
 }
