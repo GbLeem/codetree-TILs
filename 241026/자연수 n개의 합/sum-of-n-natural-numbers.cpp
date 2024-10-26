@@ -7,7 +7,7 @@ int main()
 {
     cin >> s; //합이 s이하
     long long left = 1;
-    long long right = s/2;
+    long long right = 2'000'000'000;
     long long max_num = 0;
 
     while(left <= right)
