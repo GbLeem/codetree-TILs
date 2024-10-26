@@ -2,22 +2,14 @@
 #include <climits>
 using namespace std;
 
-int n;
-int M = INT_MAX;
+long long n;
 
 bool Count(int k)
 {
-    int temp = n;
-    for(int i = 1; i <= k; ++i)
-    {
-        if(i % 3 != 0 && i % 5 != 0)
-            temp--;
-
-        if(temp == 0)
-        {
-            return true;
-        }
-    }
+    long long cnt = k / 3 + k / 5 - k / 15;
+    
+    if(k - cnt >= n)
+        return true;
 
     return false;
 }
@@ -26,13 +18,13 @@ int main()
 {
     cin >> n;
     
-    int left = 1;
-    int right = M;
-    int answer = M;
+    long long left = 1;
+    long long right = INT_MAX;
+    long long answer = INT_MAX;
 
     while(left <= right)
     {
-        int mid = (left + right) / 2;
+        long long mid = (left + right) / 2;
 
         if(Count(mid))
         {
