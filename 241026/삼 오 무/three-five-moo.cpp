@@ -1,8 +1,9 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 int n;
-int M = 100'000'000;
+int M = INT_MAX;
 
 bool Count(int k)
 {
