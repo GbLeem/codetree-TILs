@@ -2,7 +2,7 @@
 using namespace std;
 
 int n;
-long long M = 2'000'000'000;
+long long M = 1'000'000'000;
 
 int main() 
 {
