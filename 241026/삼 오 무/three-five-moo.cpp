@@ -2,7 +2,7 @@
 using namespace std;
 
 int n;
-int M = 1'000'000;
+int M = 100'000'000;
 
 bool Count(int k)
 {
