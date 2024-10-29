@@ -108,7 +108,7 @@ int main()
                 //}
 
                
-                if (cnt * m - costK > 0)
+                if (cnt * m - costK >= 0)
                 {
                     answer = max(answer, cnt);
                 }
