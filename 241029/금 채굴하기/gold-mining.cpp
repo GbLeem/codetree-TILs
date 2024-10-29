@@ -14,10 +14,11 @@ int Count(int x, int y, int k)
     int vis[22][22];
     for (int i = 0; i < n; ++i)
         fill(vis[i], vis[i] + n, 0);
-    int benefit = 0;
+    
+    int benefit = board[x][y];    
 
-    benefit = board[x][y];
-    vis[x][y] = 1;
+    if(board[x][y] == 1)
+        vis[x][y] = 1;
 
     //가로줄
     for (int i = 1; i <= k; ++i)
@@ -96,18 +97,11 @@ int main()
     {
         for (int j = 0; j < n; ++j)
         {
-            for (int k = 0; k < n; ++k)
+            for (int k = 0; k <= n; ++k)
             {
                 int cnt = Count(i, j, k);
                 int costK = k * k + (k + 1) * (k + 1);
-
-                //if (i == 2 && j == 2 && k == 2)
-                //{
-                //    cout << cnt * m - costK << "\n";
-                //    cout << cnt << "\n";
-                //}
-
-               
+                
                 if (cnt * m - costK >= 0)
                 {
                     answer = max(answer, cnt);
