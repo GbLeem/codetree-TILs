@@ -17,7 +17,7 @@ int main()
 
         if(pq.size() >= 3)
         {
-            int value = 1;
+            long long value = 1;
             int cnt = 3;
             queue<int> temp;
             while(cnt > 0)
@@ -27,6 +27,7 @@ int main()
                 pq.pop();
                 cnt--;
             }    
+
             cout << value <<"\n";
 
             while(!temp.empty())
