@@ -8,6 +8,7 @@ set<pair<int, int>> s;
 int main() 
 {
     cin >> n >> m;
+
     for(int i = 0; i < n; ++i)
     {
         int x, y;        
@@ -19,20 +20,19 @@ int main()
     {
         int x, y;
         cin >> x >> y;
-        pair<int, int> comp = {x, y};        
-        pair<int, int> ans;
-        //x보다 크거나 같은
-        if(lower_bound(s.begin(), s.end(), comp) != s.end())
+        
+        
+        //x보다 크거나 같은        
+        if(s.lower_bound(make_pair(x, y)) != s.end())
         {
-            ans = *lower_bound(s.begin(), s.end(), comp);
+            pair<int ,int >ans = *s.lower_bound(make_pair(x,y));
+            cout << ans.first <<" "<<ans.second<<"\n";
         }
         else
         {
-            ans.first = -1;
-            ans.second = -1;
+            cout << -1 <<" "<< -1 <<"\n";
         }
 
-        cout << ans.first <<" "<<ans.second <<"\n";
     }
     return 0;
 }
