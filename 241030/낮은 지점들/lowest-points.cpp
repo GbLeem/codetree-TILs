@@ -29,7 +29,7 @@ int main()
 
     unordered_map<int, int>::iterator it;
 
-    int answer = 0;
+    long long answer = 0;
     for(it = um.begin(); it != um.end(); ++it)
     {
         answer += it->second;
