@@ -5,6 +5,7 @@ using namespace std;
 int n, s;
 int board[100'002];
 int answer = INT_MAX;
+int total = 0;
 
 int main() 
 {
@@ -16,22 +17,31 @@ int main()
     for(int i = 0; i < n; ++i)
     {
         cin >> board[i];
+        total += board[i];
     }
+
+    int tempSum = 0;
+    int en = 0;
 
     for(int st = 0; st < n; ++st)
     {
-        int tempSum = 0;
-        for(int en = st; en < n; ++en)
+        while(en < n && tempSum + board[en] < s)
         {
             tempSum += board[en];
-            if(tempSum >= s)
-            {
-                answer = min(answer, en - st + 1);            
-                break;
-            }
+            en++;
         }
+        if(total == tempSum)
+        {
+            cout << -1;
+            return 0;
+        }
+        
+        if(tempSum + board[en] < s)
+            continue;
+        answer = min(answer, en - st + 1);
+        tempSum -= board[st];        
     }
-    
+
     cout << answer;
     return 0;
 }
