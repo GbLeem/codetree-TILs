@@ -5,6 +5,7 @@ int n, m;
 int board[100'002];
 int answer = 0;
 
+//연속하는! 이라는 키워드
 int main() 
 {
     cin >> n >> m;
@@ -18,19 +19,21 @@ int main()
 
     for(int st = 0; st < n; ++st)
     {
-        while(en < n && sum < m) 
+        while(en < n && sum + board[en] <= m)
         {
             sum += board[en];
             en++;
+            //완성
+            if(sum == m)            
+            {        
+                answer++;                         
+                break;
+            }                                    
 
-            if(sum == m)
-            {
-                answer++;            
-                break;
-            }
+            //st를 움직여야 함
             if(sum > m)
-            {                
-                break;
+            {
+                break;            
             }
         }   
         sum -= board[st];
