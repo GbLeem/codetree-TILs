@@ -6,7 +6,7 @@ using namespace std;
 
 int n;
 vector<int> board;
-long long answer = INT_MAX + 2;
+int answer = INT_MAX;
 
 //테스트케이스 5번
 int main() 
@@ -22,13 +22,15 @@ int main()
     sort(board.begin(), board.end()); //-123 1 1 2 2 124
 
     int en = n - 1;
-    long long minValue = INT_MAX + 2;
+    int minValue = INT_MAX;
 
     for (int st = 0; st < n; ++st)
     {
         while (en != 0 && abs(board[en] + board[st]) < minValue)
-        {            
+        {                        
             minValue = abs(board[en] + board[st]);
+            //cout << st<< " " << en << " " << minValue<< "\n";
+
             en--;
             answer = min(answer, minValue);
 
@@ -37,13 +39,15 @@ int main()
                 cout << 0;
                 return 0;
             }
+            if(en <= st)        
+                break;        
         }
 
-        if(en <= st)
-            break;        
+        //조건을 만족하지 못했는데, 모든 경우 다 봤다면
+
     }    
-    //answer = min(answer, minValue);
 
     cout << answer;
+    //cout << -1000000000 + 2 <<"\n";
     return 0;
 }
