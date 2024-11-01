@@ -12,11 +12,11 @@ struct cmp
         {   
             if(a.first == b.first)
             {
-                return a.second < b.second;
+                return a.second > b.second;
             }
-            return a.first < b.first;
+            return a.first > b.first;
         }
-        return a.first +a.second > b.first + b.second;
+        return a.first + a.second > b.first + b.second;
     }
 };
 priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> pq;
