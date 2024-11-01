@@ -27,7 +27,7 @@ int main()
             tempPQ.push(board[i]);    
         }
 
-        int tempValue = 0;
+        float tempValue = 0;
         int cnt = 0;
 
         while(tempPQ.size() > 1)
@@ -37,7 +37,7 @@ int main()
             cnt++;
         }
         //cout << (float)tempValue / cnt << "\n";
-        answer = max(answer, (float)tempValue / cnt);
+        answer = max(answer, tempValue / cnt);
     }
     
     cout << fixed;
