@@ -8,7 +8,6 @@ int n;
 vector<int> board;
 int answer = INT_MAX;
 
-//테스트케이스 5번
 int main() 
 {
     cin >> n;
@@ -19,36 +18,23 @@ int main()
         board.push_back(num);
     }
 
-    sort(board.begin(), board.end()); //-123 1 1 2 2 124
+    sort(board.begin(), board.end());
 
     int en = n - 1;
     int minValue = INT_MAX;
 
     for (int st = 0; st < n; ++st)
     {
-        while (en != 0 && abs(board[en] + board[st]) < minValue)
-        {                        
-            minValue = abs(board[en] + board[st]);
-            //cout << st<< " " << en << " " << minValue<< "\n";
+        if(st < en)
+            answer = min(answer, abs(board[st] + board[en]));
 
+        while(st < en - 1 && board[st] + board[en] > 0)
+        {
             en--;
-            answer = min(answer, minValue);
-
-            if(answer == 0)
-            {
-                cout << 0;
-                return 0;
-            }
-            //조건을 만족하지 못했는데, 모든 경우 다 봤다면
-            if(en <= st)        
-                break;        
-        }
-
-        if(en <= st)        
-            break;   
+            answer = min(answer, abs(board[st] + board[en]));
+        }   
     }    
 
     cout << answer;
-    //cout << -1000000000 + 2 <<"\n";
     return 0;
 }
