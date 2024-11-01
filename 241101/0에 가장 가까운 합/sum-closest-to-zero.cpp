@@ -25,12 +25,19 @@ int main()
     {
         int en = st + 1;
         int minValue = INT_MAX; 
+
         while (en != n)
         {
             if (abs(board[en] + board[st]) <= minValue)
             {
                 minValue = abs(board[en] + board[st]);
                 en++;
+                
+                if(minValue == 0)
+                {
+                    cout << 0;
+                    return 0;
+                }
             }
             else
                 break;
