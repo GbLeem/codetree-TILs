@@ -28,16 +28,15 @@ int main()
         }
 
         float tempValue = 0;
-        int cnt = 0;
-
+        int cnt = tempPQ.size() - 1;
+        
         while(tempPQ.size() > 1)
         {
             tempValue += tempPQ.top();
             tempPQ.pop();
-            cnt++;
         }
         //cout << (float)tempValue / cnt << "\n";
-        answer = max(answer, tempValue / cnt);
+        answer = max(answer, tempValue /cnt);
     }
     
     cout << fixed;
