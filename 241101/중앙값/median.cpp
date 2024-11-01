@@ -7,30 +7,53 @@ int t, m;
 int main() 
 {
     cin >> t;
+
     while(t--)
     {
         cin >> m;
-        priority_queue<int> pq;
+
+        int mid = -1;
+        priority_queue<int> smallpq;
+        priority_queue<int, vector<int>, greater<int>> bigpq;
 
         for(int i = 1; i <= m; ++i)
         {
-            int num;
+            int num; 
             cin >> num;
-            pq.push(num);
-            
+
+            //맨 처음
+            if(mid == -1)
+                mid = num;
+            else if(num < mid)
+            {
+                smallpq.push(num);
+            }
+            else if(num >= mid)
+            {
+                bigpq.push(num);
+            }
+        
             if(i % 2 != 0)
             {
-                priority_queue<int> tempPQ = pq;
-                vector<int> board;
-                while(!tempPQ.empty())    
+                //비대칭일 때
+                if(!bigpq.empty() && smallpq.size() < bigpq.size())
                 {
-                    board.push_back(tempPQ.top());
-                    tempPQ.pop();
+                    smallpq.push(mid);
+                    mid = bigpq.top();
+                    bigpq.pop();
                 }
-                cout << board[board.size()/2] <<" ";
+                else if(!smallpq.empty() && smallpq.size() > bigpq.size())
+                {
+                    bigpq.push(mid);
+                    mid = smallpq.top();
+                    smallpq.pop();
+                }
+
+                cout << mid <<" ";
             }            
         }
-        cout << "\n";
-    }
+        cout<<"\n";
+    }    
     return 0;
+
 }
