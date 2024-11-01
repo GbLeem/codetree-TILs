@@ -22,10 +22,10 @@ int main()
     sort(board.begin(), board.end()); //-123 1 1 2 2 124
 
     int en = n - 1;
+    int minValue = INT_MAX; 
 
     for (int st = 0; st < n; ++st)
     {
-        int minValue = INT_MAX; 
         while (en != 0 && abs(board[en] + board[st]) <= minValue)
         {            
             minValue = abs(board[en] + board[st]); //1
@@ -36,7 +36,8 @@ int main()
         if(en <= st)
             break;        
     }    
-
+    answer = min(answer, minValue);
+    
     cout << answer;
     return 0;
 }
