@@ -5,11 +5,10 @@
 using namespace std;
 
 int n;
-vector<int> board;
-long long answer = INT_MAX;
+vector<long> board;
+long answer = INT_MAX;
 
 //테스트케이스 5번
-
 int main() 
 {
     cin >> n;
@@ -20,13 +19,13 @@ int main()
         board.push_back(num);
     }
 
-    int en = 0;
+    int en = 1;
 
     sort(board.begin(), board.end()); //-123 1 1 2 2 124    
 
     for (int st = 0; st < n; ++st)
     {
-        long long minValue = INT_MAX;
+        long minValue = INT_MAX;
 
         while (en != n)
         {
