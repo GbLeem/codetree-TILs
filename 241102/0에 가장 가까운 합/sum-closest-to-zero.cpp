@@ -39,12 +39,13 @@ int main()
                 cout << 0;
                 return 0;
             }
+            //조건을 만족하지 못했는데, 모든 경우 다 봤다면
             if(en <= st)        
                 break;        
         }
 
-        //조건을 만족하지 못했는데, 모든 경우 다 봤다면
-
+        if(en <= st)        
+            break;   
     }    
 
     cout << answer;
