@@ -28,20 +28,19 @@ int main()
         }
 
         float tempValue = 0;
-        int cnt = tempPQ.size() - 1;
-        
+        int cnt = 0;
+
         while(tempPQ.size() > 1)
         {
             tempValue += tempPQ.top();
             tempPQ.pop();
+            cnt++;
         }
         //cout << (float)tempValue / cnt << "\n";
-        answer = max(answer, tempValue /cnt);
+        answer = max(answer, tempValue / cnt);
     }
-    
-    cout << fixed;
-    cout.precision(2);
-    cout << answer;
+     
+    printf("%.2f", answer);
 
     return 0;
 }
