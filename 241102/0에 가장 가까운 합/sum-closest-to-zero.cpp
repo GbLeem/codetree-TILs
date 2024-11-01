@@ -6,7 +6,7 @@ using namespace std;
 
 int n;
 vector<int> board;
-int answer = INT_MAX;
+long long answer = INT_MAX + INT_MAX;
 
 //테스트케이스 5번
 int main() 
@@ -22,7 +22,7 @@ int main()
     sort(board.begin(), board.end()); //-123 1 1 2 2 124
 
     int en = n - 1;
-    int minValue = INT_MAX; 
+    long long minValue = INT_MAX + INT_MAX;
 
     for (int st = 0; st < n; ++st)
     {
