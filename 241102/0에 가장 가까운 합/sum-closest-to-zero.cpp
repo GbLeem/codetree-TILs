@@ -26,18 +26,24 @@ int main()
 
     for (int st = 0; st < n; ++st)
     {
-        while (en != 0 && abs(board[en] + board[st]) <= minValue)
+        while (en != 0 && abs(board[en] + board[st]) < minValue)
         {            
-            minValue = abs(board[en] + board[st]); //1
+            minValue = abs(board[en] + board[st]);
             en--;
             answer = min(answer, minValue);
+
+            if(answer == 0)
+            {
+                cout << 0;
+                return 0;
+            }
         }
 
         if(en <= st)
             break;        
     }    
-    answer = min(answer, minValue);
-    
+    //answer = min(answer, minValue);
+
     cout << answer;
     return 0;
 }
