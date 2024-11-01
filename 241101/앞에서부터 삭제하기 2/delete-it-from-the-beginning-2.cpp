@@ -4,13 +4,14 @@ using namespace std;
 
 int n;
 int board[100'002];
+priority_queue<int> pq;
 float answer = 0;
 
 int main() 
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+
     cin >> n;
     for(int i = 0; i < n; ++i)
     {
@@ -19,13 +20,10 @@ int main()
     
     //k : 1 ~ n-2    
     for(int k = 1; k <= n - 2; ++k)
-    {
-        //k개 제거
-        int tempK = k;
-
+    {               
         priority_queue<int> tempPQ;
-
-        for(int i = tempK; i < n; ++i)
+        
+        for(int i = k; i < n; ++i)
         {
             tempPQ.push(board[i]);    
         }
