@@ -21,10 +21,11 @@ int main()
 
     sort(board.begin(), board.end()); //-123 1 1 2 2 124    
 
-    int en = 1;
     long long minValue = INT_MAX;
+
     for (int st = 0; st < n; ++st)
     {
+        int en = st + 1;
         while (en != n)
         {
             if (abs(board[en] + board[st]) <= minValue)
