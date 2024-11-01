@@ -3,7 +3,7 @@
 using namespace std;
 
 int n;
-priority_queue<int> pq;
+int board[100'002];
 float answer = 0;
 
 int main() 
@@ -11,36 +11,38 @@ int main()
     cin >> n;
     for(int i = 0; i < n; ++i)
     {
-        int num;
-        cin >> num;
-        pq.push(num);    
+        cin >> board[i]; // 3 1 9 2 7 
     }
     
     //k : 1 ~ n-2    
-    for(int k = 1; k <= n-2; ++k)
+    for(int k = 1; k <= n - 2; ++k)
     {
-        priority_queue<int> tempPQ = pq;
-
         //k개 제거
         int tempK = k;
-        while(tempK--)
+
+        priority_queue<int> tempPQ;
+
+        for(int i = tempK; i < n; ++i)
         {
-            tempPQ.pop();
+            tempPQ.push(board[i]);    
         }
+
         int tempValue = 0;
         int cnt = 0;
+
         while(tempPQ.size() > 1)
         {
             tempValue += tempPQ.top();
             tempPQ.pop();
             cnt++;
         }
-        answer = max((float)answer / cnt);
+        //cout << (float)tempValue / cnt << "\n";
+        answer = max(answer, (float)tempValue / cnt);
     }
     
     cout << fixed;
     cout.precision(2);
     cout << answer;
-    
+
     return 0;
 }
