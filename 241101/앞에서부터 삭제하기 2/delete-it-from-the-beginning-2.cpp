@@ -4,9 +4,8 @@ using namespace std;
 
 int n;
 int board[100'002];
-priority_queue<int, vector<int>, greater<int>> pq;
-float answer = 0;
-int minValue = 0;
+priority_queue<int, vector<int>, greater<int>> pq; //최소힙
+double answer = 0;
 int sum = 0;
 
 int main() 
@@ -18,33 +17,23 @@ int main()
     for(int i = 0; i < n; ++i)
     {
         cin >> board[i]; // 3 1 9 2 7 
-        pq.push(board[i]);
-        sum += board[i];
     }
+     // 1 2 3 7 9 
+    pq.push(board[n - 1]); //7
+    sum += board[n-1]; //7
     
-    minValue = pq.top(); //가장 작은 값    
-    int cnt = n - 1; //가장 작은 값을 제외한 사이즈
+    for(int k = n - 2; k >= 1; --k)
+    {
+        pq.push(board[k]); // 2 7 9
+        sum += board[k]; //9
 
-    //k : 1 ~ n-2
-    for(int k = 1; k <= n - 2; ++k)
-    {   
-        int removeValue = board[k - 1]; // 없앨 값      
+        answer = max(answer, (double)(sum - pq.top()) / (pq.size() - 1));
 
-        if(removeValue == minValue)      // 가장 작은 값 리셋    
-        {
-            pq.pop();
-            minValue = pq.top();
-        }
-                    
-        sum -= removeValue; //없애기          
-        cnt--;
-        //cout << cnt << " " << minValue << "\n";
-
-        answer = max(answer, (float)(sum - minValue) / cnt);
     }
     
     cout << fixed;
     cout.precision(2);
+
     cout << answer;
 
     return 0;
