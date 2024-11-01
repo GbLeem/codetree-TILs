@@ -23,21 +23,24 @@ int main()
     }
     
     minValue = pq.top(); //가장 작은 값    
-    int cnt = n - 1;
+    int cnt = n - 1; //가장 작은 값을 제외한 사이즈
 
     //k : 1 ~ n-2
     for(int k = 1; k <= n - 2; ++k)
     {   
         int removeValue = board[k - 1]; // 없앨 값      
 
-        if(removeValue < minValue)      // 가장 작은 값 리셋    
-            minValue = removeValue;
+        if(removeValue == minValue)      // 가장 작은 값 리셋    
+        {
+            pq.pop();
+            minValue = pq.top();
+        }
                     
-        sum -= removeValue; //없애기
-        sum -= minValue;        
+        sum -= removeValue; //없애기          
         cnt--;
+        //cout << cnt << " " << minValue << "\n";
 
-        answer = max(answer, (float)sum / cnt);
+        answer = max(answer, (float)(sum - minValue) / cnt);
     }
     
     cout << fixed;
