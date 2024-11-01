@@ -8,6 +8,9 @@ float answer = 0;
 
 int main() 
 {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
     cin >> n;
     for(int i = 0; i < n; ++i)
     {
@@ -39,8 +42,10 @@ int main()
         //cout << (float)tempValue / cnt << "\n";
         answer = max(answer, tempValue / cnt);
     }
-     
-    printf("%.2f", answer);
+    
+    cout << fixed;
+    cout.precision(2);
+    cout << answer;
 
     return 0;
 }
