@@ -6,6 +6,7 @@ using namespace std;
 unordered_map<char, int> board;
 char alpha[26] = {'a', 'b', 'c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 int answer = 0;
+int cnt = 0;
 
 int main() 
 {
@@ -21,14 +22,26 @@ int main()
     
     int en = 0;
     for(int st = 0; st < str.size(); ++st)
-    {
-        while(en < str.size() && board[str[en]] <= k)
-        {
-            board[str[en]]++;
-            en++;
+    {    
+        while(en < str.size() && cnt <= k)
+        {                        
+            //방문 안된 경우 cnt 증가
+            if(board[str[en]] == 0)
+            {
+                board[str[en]] = 1;             
+                cnt++;
+            }  
+            if(cnt > k)
+            {
+                board[str[en]] = 0;
+                break;          
+            }
+            en++;            
+
         }
         answer = max(answer, en - st);
         board[str[st]]--;
+        cnt--;
     }
 
     cout << answer;
