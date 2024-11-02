@@ -30,10 +30,13 @@ int main()
             {
                 board[str[en]] = 1;             
                 cnt++;
-            }  
+            }
+
+            //들어와서 새롭게 갱신된 경우 -> 잘못된 경우
             if(cnt > k)
             {
                 board[str[en]] = 0;
+                cnt--;
                 break;          
             }
             en++;            
