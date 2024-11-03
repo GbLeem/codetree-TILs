@@ -1,11 +1,11 @@
 #include <iostream>
-#include <set>
 #include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 int n, q;
 int board[100'002];
-set<int> s;
+//set<int> s;
 unordered_map<int, int> um;
 
 int main() 
@@ -13,20 +13,19 @@ int main()
     cin >> n >> q;
     for(int i = 0; i < n; ++i)
     {
-        cin >> board[i];
-        s.insert(board[i]);
-    }        
-
-    set<int>::iterator it;
-
+        cin >> board[i];        
+    }
+    sort(board, board + n);
+    
     int cnt = 1;
-    for(it = s.begin(); it != s.end(); ++it)
+
+    for(int i = 0; i < n; ++i)
     {
-        um[*it] = cnt;
-        //cout << *it << " -> " << cnt<<"\n";
-        board[*it] = cnt;
+        um[board[i]] = cnt;    //um[-3] = 1
+        board[i] = cnt;       //board[0] = 1;
         cnt++;
     }    
+    
     // for(int i = 0; i < n; ++i)
     //     cout << board[i] <<" ";
         
