@@ -41,7 +41,7 @@ int main()
         }
         answer = max(answer, en - st);       
         um_k[board[st]]--;
-        
+        maxKCnt = max(maxKCnt, um_k[board[st]]);       
     }
 
     cout << answer;
