@@ -42,14 +42,10 @@ int main()
         answer = max(answer, en - st);       
 
         //만약 maxKCnt가 것이 st였고 다른 maxKCnt 없다면,
+        if(um_k[board[st]] == maxKCnt)
+            maxKCnt--;
         um_k[board[st]]--;                
-        int tempMax = 0;
-        for(unordered_map<int, int>::iterator it = um_k.begin(); it != um_k.end(); ++it)
-        {
-            tempMax = max(tempMax, it->second);
-        }
-
-        maxKCnt = tempMax;
+            
     }
 
     cout << answer;
