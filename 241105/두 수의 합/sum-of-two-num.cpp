@@ -1,57 +1,10 @@
 #include <iostream>
-#include <vector>
-#include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 int n, k;
 int board[100'002];
-vector<int> ans;
-unordered_map<int, int> um;
 int answer = 0;
-
-void Print()
-{
-    for (auto a : ans)
-        cout << a << " ";
-    cout << "\n";
-}
-bool Check()
-{
-    int temp = 0;
-    for (auto a : ans)
-    {
-        temp += board[a];
-    }
-    if (temp == k)
-        return true;
-    return false;
-}
-
-void Choose(int cur)
-{
-    if (cur == 3)
-    {
-        //Print();
-        if (Check())
-            answer++;
-        return;
-    }
-
-    for (int i = 0; i < n; ++i)
-    {
-        //비어있지 않을땐 쓴적 없음, 비어있을땐 인덱스보다 커야함
-        if (um[i] == 0)
-        {
-            if (!ans.empty() && ans[0] > i)
-                continue;
-            ans.push_back(i);
-            um[i]++;
-            Choose(cur + 1);
-            ans.pop_back();
-            um[i]--;
-        }
-    }
-}
 
 int main()
 {
@@ -61,7 +14,19 @@ int main()
         cin >> board[i];
     }
 
-    Choose(1);
+    sort(board, board + n);
+    int en = n - 1;
+    for (int st = 0; st < n; ++st)
+    {
+        while (en > st && board[st] + board[en] > k)
+        {
+            en--;
+        }
+        if (board[st] + board[en] == k)
+            answer++;
+        if (en == st)
+            break;
+    }
 
     cout << answer;
     return 0;
