@@ -1,6 +1,6 @@
 #include <iostream>
-#include <set>
 #include <vector>
+#include <set>
 #include <unordered_map>
 using namespace std;
 
@@ -33,21 +33,22 @@ int main()
     for (int i = 1; i <= 3 * k; ++i)
     {
         //새로운 인덱스의 인덱스
-        int idx = i % k;        
+        int idx = i % k;  //1에서 k분까지 
 
         //새로운 인덱스
         int a = query[idx].first;
         int b = query[idx].second;
 
+        //idx가 0되면, 인덱스 k로 바꿈
         if (idx == 0)
         {
-            a = query[k].first;
-            b = query[k].second;              
+            a = query[k].first; //1
+            b = query[k].second; //3           
         }        
 
-        swap(board[a], board[b]);
-        um[board[a]].insert(b);
-        um[board[b]].insert(a);
+        swap(board[a], board[b]); //3 2 1 4 5
+        um[board[a]].insert(a);
+        um[board[b]].insert(b);
     }
 
     for (int i = 1; i <= n; ++i)
