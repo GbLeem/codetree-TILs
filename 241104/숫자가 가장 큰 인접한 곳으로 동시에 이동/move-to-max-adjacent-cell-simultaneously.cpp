@@ -16,8 +16,8 @@ bool InRange(int x, int y)
 
 void Move(int x, int y)
 {        
-    int mx = 0;
-    int my = 0;
+    int mx = -1;
+    int my = -1;
     int mv = 0;
 
     for(int dir = 0; dir < 4; ++dir)
@@ -29,15 +29,17 @@ void Move(int x, int y)
         if(InRange(nx, ny))
         {
             //큰 값이고, 원래 큰 값보다도 클때 값 리셋
-            if(board[nx][ny] > board[x][y] && board[nx][ny] > mv)
+            if(board[nx][ny] > mv)
             {
                 mx = nx;
                 my = ny;
-                mv = board[nx][ny];
+                mv = board[nx][ny]; //큰 값
             }        
         }        
     }
-    if(mx != 0 && my != 0)
+
+    //이동할 수 있는 경우
+    if(mx != -1 && my != -1)
         newCountBoard[mx][my]++;
 }
 
