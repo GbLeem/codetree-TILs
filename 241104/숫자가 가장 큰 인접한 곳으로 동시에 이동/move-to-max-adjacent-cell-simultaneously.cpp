@@ -57,9 +57,10 @@ int main()
     {
         int r, c;
         cin >> r >> c;
-        countBoard[r-1][c-1] = 1;        
+        countBoard[r - 1][c - 1] = 1;       
     }
 
+    //t번 반복
     for(int ti = 0; ti < t; ++ti)
     {
         for(int i = 0; i < n; ++i)
@@ -74,16 +75,17 @@ int main()
             }
         }
 
-        //count 배열 리셋
+        //countboard 배열 리셋
         for(int i = 0; i < n; ++i)
         {
             for(int j = 0; j < n; ++j)
             {
                 countBoard[i][j] = newCountBoard[i][j];
                 if(countBoard[i][j] > 1)
-                    m--;
+                    m-=countBoard[i][j];                    
             }
         }
+        //newcountboard 배열 리셋
         for(int i = 0; i < n; ++i)
         {
             for(int j = 0; j < n; ++j)
