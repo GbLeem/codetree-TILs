@@ -15,9 +15,7 @@ bool InRange(int x, int y)
 }
 
 void Move(int x, int y)
-{
-    int dir = 0;
-    
+{        
     int mx = 0;
     int my = 0;
     int mv = 0;
@@ -39,7 +37,8 @@ void Move(int x, int y)
             }        
         }        
     }
-    newCountBoard[mx][my]++;
+    if(mx != 0 && my != 0)
+        newCountBoard[mx][my]++;
 }
 
 int main()
@@ -49,10 +48,11 @@ int main()
     {
         for(int j = 0; j < n; ++j)
         {
-            cin >> board[i][j];
+            cin >> board[i][j];        
         }
     }
 
+    //초기 구슬 배치
     for(int i = 0; i < m; ++i)
     {
         int r, c;
