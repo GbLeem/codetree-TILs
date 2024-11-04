@@ -22,6 +22,7 @@ int main()
             if(i - board[j] >= 0)
             {
                 d[i] += d[i - board[j]];
+                d[i] %= 10'007;
                 //cout << i << " " << j << " " << d[i]<<"\n";
             }
         }
