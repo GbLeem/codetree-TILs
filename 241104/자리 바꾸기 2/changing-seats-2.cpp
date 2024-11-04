@@ -1,13 +1,13 @@
 #include <iostream>
-#include <vector>
 #include <set>
+#include <vector>
 #include <unordered_map>
 using namespace std;
 
 int n, k;
 int board[10'002];
 unordered_map<int, set<int>> um;
-vector<pair<int, int>> query(10'002);
+vector<pair<int, int>> query;
 //1 2 3 4 5
 
 int main()
@@ -19,15 +19,14 @@ int main()
         board[i] = i; //0 1 2 3 4 5
         um[board[i]].insert(board[i]); //1 1 , 2 2, 3 3, 4 4, 5 5  
     }
-
+    query.push_back({ 0,0 });
     for (int i = 1; i <= k; ++i)
     {
         int a, b;
         cin >> a >> b;  // 1 3, 1 2, 2 3, 2 4
 
         //인덱스
-        query[i].first = a;
-        query[i].second = b;
+        query.push_back({ a,b });        
     }
 
     for (int i = 1; i <= 3 * k; ++i)
