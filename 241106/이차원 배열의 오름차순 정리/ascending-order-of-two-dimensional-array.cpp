@@ -4,7 +4,7 @@
 using namespace std;
 
 int n, k;
-vector<int> board;
+vector<long long> board;
 
 void Print()
 {
