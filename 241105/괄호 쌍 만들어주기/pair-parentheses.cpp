@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int board[10'002];
+int board[100'002];
 
 int main() 
 {
