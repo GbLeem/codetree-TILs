@@ -59,31 +59,40 @@ int main()
     int curTime = 1;
     bool waiting = false;
     int outTime = 0;
+    tuple<int, int, int> topValue;
 
     while (1)
     {
-        auto topValue = pq.top();
+        while (!pq.empty())
+        {       
+            topValue = pq.top();
 
-        if (curTime == get<0>(topValue))
-        {
-            pq.pop();
-
-            if (garden.empty())
+            if (curTime == get<0>(topValue))
             {
-                garden.push(topValue);
-                timeBoard[get<1>(topValue)] = 0;
-                outTime = curTime + get<2>(topValue);
+                pq.pop();
+                //맨 처음 처리
+                if (garden.empty())
+                {
+                    garden.push(topValue);
+                    timeBoard[get<1>(topValue)] = 0;
+                    outTime = curTime + get<2>(topValue);
+                }
+                else
+                {
+                    waitingPQ.push(topValue);
+                }
             }
-
-            else
+            else if (pq.size() == n)
             {
-                waitingPQ.push(topValue);
+                curTime++;
             }
-        }
+            else if(curTime != get<0>(topValue))
+                break;
+        }        
 
         if (curTime == outTime)
         {
-            if(!garden.empty())
+            if (!garden.empty())
                 garden.pop();
             if (!waitingPQ.empty())
             {
