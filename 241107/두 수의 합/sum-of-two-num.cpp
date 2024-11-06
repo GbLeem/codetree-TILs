@@ -31,7 +31,7 @@ int main()
             }
             else
             {
-                answer++;
+                answer += (numCount[temp]);
                 numCount[temp]--;
                 numCount[board[i]]--;
             }
