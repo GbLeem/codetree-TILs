@@ -16,14 +16,19 @@ int main()
         cin >> board[i];
     }
     sort(board, board + n);
+    // 3 4 5 6 7
 
-    for(int i = 0; i < n; ++i)
+    int en = 1;
+    for(int st = 0; st < n; ++st)
     {
-        for(int j = i + 1; j < n; ++j)
+        en = st + 1;
+        while(en < n && board[st] + board[en] < k)
         {
-            um[board[i] + board[j]]++;
-            if(board[i] + board[j] > k)
-                break;
+            en++;
+        }
+        if(board[st] + board[en] == k)
+        {
+            um[k]++;
         }
     }
     
