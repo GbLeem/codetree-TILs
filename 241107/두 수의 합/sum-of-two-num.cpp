@@ -5,8 +5,8 @@ using namespace std;
 
 int n, k;
 int board[100'002];
-unordered_map<int, int> numCount;
-int answer = 0;
+unordered_map<long long, long long> numCount;
+long answer = 0;
 
 int main()
 {
