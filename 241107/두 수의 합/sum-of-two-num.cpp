@@ -1,11 +1,14 @@
 #include <iostream>
-#include <unordered_map>
+#include <unordered_set>
 #include <algorithm>
 using namespace std;
 
 int n, k;
 int board[100'002];
+unordered_set<int> us1;
+unordered_set<int> us2;
 unordered_map<int, int> um;
+
 int answer = 0;
 
 int main()
@@ -15,27 +18,20 @@ int main()
     {
         cin >> board[i];
     }
-    sort(board, board + n);
-    int orginIdx = 0;
-    int valueIdx = 0;
-    int pass = 0;
-
-    for (int i = 0; i < n * n; ++i)
+    
+    for(int i = 0; i < n; ++i)
     {
-        if (i != 0 && i % n == 0)
-        {
-            orginIdx++;
-            pass += (n + 1);
-        }
-        valueIdx = i % n;
+        int temp = k - board[i]; //필요한 수가 뭔지
         
-        if (i > pass)
+        if (us1.count(temp) && !us2.count(temp)) //이전에 등장했다면,
         {
-            //cout << orginIdx << " " << valueIdx << "\n";
-            um[board[orginIdx] + board[valueIdx]]++;            
-        }        
+            answer++;
+            us2.insert(board[i]);
+        }
+        //등장안했으면
+        us1.insert(board[i]);
     }
 
-    cout << um[k];
+    cout << answer;
     return 0;
 }
