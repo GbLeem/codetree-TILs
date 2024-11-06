@@ -7,7 +7,6 @@ int n, k;
 int board[100'002];
 unordered_set<int> us1;
 unordered_set<int> us2;
-unordered_map<int, int> um;
 
 int answer = 0;
 
