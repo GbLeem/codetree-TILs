@@ -16,22 +16,26 @@ int main()
         cin >> board[i];
     }
     sort(board, board + n);
-    // 3 4 5 6 7
+    int orginIdx = 0;
+    int valueIdx = 0;
+    int pass = 0;
 
-    int en = 1;
-    for(int st = 0; st < n; ++st)
+    for (int i = 0; i < n * n; ++i)
     {
-        en = st + 1;
-        while(en < n && board[st] + board[en] < k)
+        if (i != 0 && i % n == 0)
         {
-            en++;
+            orginIdx++;
+            pass += (n + 1);
         }
-        if(board[st] + board[en] == k)
+        valueIdx = i % n;
+        
+        if (i > pass)
         {
-            um[k]++;
-        }
+            //cout << orginIdx << " " << valueIdx << "\n";
+            um[board[orginIdx] + board[valueIdx]]++;            
+        }        
     }
-    
+
     cout << um[k];
     return 0;
 }
