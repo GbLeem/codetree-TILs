@@ -1,13 +1,11 @@
 #include <iostream>
-#include <unordered_set>
 #include <algorithm>
+#include <unordered_map>
 using namespace std;
 
 int n, k;
 int board[100'002];
-unordered_set<int> us1;
-unordered_set<int> us2;
-
+unordered_map<int, int> numCount;
 int answer = 0;
 
 int main()
@@ -16,21 +14,31 @@ int main()
     for (int i = 0; i < n; ++i)
     {
         cin >> board[i];
+        numCount[board[i]]++;
     }
-    
-    for(int i = 0; i < n; ++i)
+    sort(board, board + n);
+    for (int i = 0; i < n; ++i)
     {
-        int temp = k - board[i]; //필요한 수가 뭔지
-        
-        if (us1.count(temp) && !us2.count(temp)) //이전에 등장했다면,
+        int temp = k - board[i];
+
+        //필요한 값이 있으면,
+        if (numCount[temp] > 0)
         {
-            answer++;
-            us2.insert(board[i]);
+            if (temp == board[i])
+            {
+                answer += (numCount[temp] - 1);
+                numCount[temp]--;
+            }
+            else
+            {
+                answer++;
+                numCount[temp]--;
+                numCount[board[i]]--;
+            }
         }
-        //등장안했으면
-        us1.insert(board[i]);
     }
 
     cout << answer;
+
     return 0;
 }
