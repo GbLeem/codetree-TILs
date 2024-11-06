@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 int n, k;
@@ -14,13 +15,15 @@ int main()
     {
         cin >> board[i];
     }
+    sort(board, board + n);
 
     for(int i = 0; i < n; ++i)
     {
-        for(int j = i+1; j < n; ++j)
+        for(int j = i + 1; j < n; ++j)
         {
             um[board[i] + board[j]]++;
-            
+            if(board[i] + board[j] > k)
+                break;
         }
     }
     
