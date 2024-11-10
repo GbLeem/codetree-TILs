@@ -12,6 +12,14 @@ int answer = 0;
 int isused[100];
 vector<int> ans;
 
+void Print()
+{
+    for (auto a : ans)
+    {
+        cout << a << " ";
+    }
+    cout << "\n";
+}
 int Check()
 {
     int maxValue = 0;
@@ -37,6 +45,7 @@ void BFS()
         int y = a % n;
 
         q.push({ x, y });
+        vis[x][y] = 0;
     }
 
     while (!q.empty())
@@ -68,6 +77,7 @@ void Choose(int cur)
 {
     if (cur == k + 1)
     {
+        //Print();
         for (int i = 0; i < n; ++i)
             fill(vis[i], vis[i] + n, -1);
         
@@ -102,7 +112,6 @@ int main()
     }
 
     Choose(1);
-
 
     cout << answer;
 
