@@ -15,7 +15,7 @@ int main()
     for(int i = 4; i <= n; ++i)
     {
         d[i] = 2 * d[i - 1] + 4 * d[i - 2] - d[i - 4]; 
-        
+        d[i] = d[i] % 1'000'000'007;
     }
 
     cout << d[n];
