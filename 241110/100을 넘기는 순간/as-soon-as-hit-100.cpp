@@ -16,11 +16,13 @@ int main()
         cin >> num;
         sum += num;
         cnt++;
+
         if(num >= 100)
         {
             cout << fixed;
             cout.precision(1);
             cout << sum <<"\n" << (float)sum/cnt;
+            return 0;
         }
     }
     return 0;
