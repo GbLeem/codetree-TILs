@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 
-long long d[1002];
+int MOD = 1'000'000'007;
+int d[1002];
 
 int main()
 {
@@ -14,9 +15,9 @@ int main()
 
     for (int i = 4; i <= n; ++i)
     {
-        d[i - 4] %= 1'000'000'007;
-        d[i] = (2 * d[i - 1] % 1'000'000'007 + 4 * d[i - 2] % 1'000'000'007 - d[i - 4]) % 1'000'000'007;
-        d[i] %= 1'000'000'007;
+        d[i] = (2LL * d[i - 1] + 4LL * d[i - 2] - d[i - 4]) % MOD;
+        if (d[i] < 0) 
+            d[i] += MOD;  // 음수인 경우 보정
     }
 
     cout << d[n];
