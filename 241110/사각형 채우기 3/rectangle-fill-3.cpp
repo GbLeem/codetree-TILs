@@ -7,15 +7,15 @@ int main()
 {
     int n;
     cin >> n;
-
+    d[0] = 1;
     d[1] = 2;
     d[2] = 7;    
+    d[3] = 22;
 
-    for(int i = 3; i <= n; ++i)
+    for(int i = 4; i <= n; ++i)
     {
-        d[i] = 2*d[i-1] + 4 * d[i-2];
-        if(i >= 4)
-            d[i] -= (i-3);
+        d[i] = 2 * d[i - 1] + 4 * d[i - 2] - d[i - 4]; 
+        
     }
 
     cout << d[n];
