@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int d[1002];
+long long d[1002];
 
 int main() 
 {
@@ -14,8 +14,8 @@ int main()
 
     for(int i = 4; i <= n; ++i)
     {
-        d[i] = 2 * d[i - 1] + 4 * d[i - 2] - d[i - 4]; 
-        d[i] = d[i] % 1'000'000'007;
+        d[i] = 2 * d[i - 1]% 1'000'000'007 + 4 * d[i - 2]% 1'000'000'007 - d[i - 4]% 1'000'000'007;
+        
     }
 
     cout << d[n];
