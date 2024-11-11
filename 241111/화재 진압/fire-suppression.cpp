@@ -10,6 +10,7 @@ int answer = 0;
 int main()
 {
     cin >> n >> m;
+
     for (int i = 0; i < n; ++i)
     {
         cin >> fire[i]; //가능성
@@ -21,7 +22,6 @@ int main()
     }
 
     int en = 0;
-    int temp = INT_MAX;
 
     //office
     for (int st = 0; st < m; ++st)
@@ -29,8 +29,8 @@ int main()
         //fire
         while (en < n)
         {
-            if (st < m - 1)
-            {
+            //if (st < m - 1)
+            //{
                 if (abs(office[st] - fire[en]) <= abs(office[st + 1] - fire[en]))
                 {
                     answer = max(answer, abs(office[st] - fire[en]));
@@ -38,14 +38,16 @@ int main()
                 }
                 else
                     break;
-            }
-            else
-            {
-                answer = max(answer, abs(office[st] - fire[en]));
-                en++;
-            }
+            //}
+            // //마지막
+            // else
+            // {
+            //     answer = max(answer, abs(office[st] - fire[en]));
+            //     en++;
+            // }
         }
     }
     cout << answer;
+
     return 0;
 }
