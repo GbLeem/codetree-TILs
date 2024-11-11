@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <climits>
 using namespace std;
 
 int n, k;
@@ -35,15 +36,38 @@ int main()
         pos.push_back({st, +1});
         pos.push_back({en, -1});        
     }
+
     sort(pos.begin(), pos.end());
 
     int tempSum = 0;
+    bool over = false;
+    int start = 0;
+    bool notChange = true;
 
     for(int i = 0; i < 2 * n; ++i)
     {
-        tempSum += pos[i].second;
-        if(tempSum >= k)
-            answer++;    
+        if(pos[i].second == 1)
+        {
+            tempSum++;
+
+            //처음 시작 구간
+            if(tempSum >= k && notChange)
+            {
+                start = pos[i].first;         
+                notChange = false;
+            }
+        }
+        else
+        {
+            tempSum--;
+
+            if(tempSum + 1 == k)
+            {
+                answer += (pos[i].first - start);                
+                notChange = true;
+            }
+        }
+
     }
     cout << answer;
 
