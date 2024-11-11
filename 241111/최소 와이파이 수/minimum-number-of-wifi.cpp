@@ -24,6 +24,7 @@ int main()
         }
         if(cur > n)
             break;
+        cur++;
     }
     cout << answer;
     return 0;
