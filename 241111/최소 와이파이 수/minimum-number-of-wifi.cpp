@@ -15,16 +15,18 @@ int main()
     }
     
     int cur = 1;
-    while(cur < n)
+
+    while(1)
     {
+        if(cur > n)
+            break;
         if(board[cur] == 1)
         {
             answer++;
             cur = cur + 2 * m + 1;
         }
-        if(cur > n)
-            break;
-        cur++;
+        else
+            cur++;
     }
     cout << answer;
     return 0;
