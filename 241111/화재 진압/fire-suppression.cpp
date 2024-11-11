@@ -28,7 +28,11 @@ int main()
         //fire
         if(st == m - 1)
         {
-            answer = abs(office[st]-fire[n-1]);
+            while(en < n)
+            {
+                answer = max(answer, abs(office[st]-fire[en]));
+                en++;
+            }
         }
         else
         {
