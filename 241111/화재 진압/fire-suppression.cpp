@@ -14,12 +14,13 @@ int main()
     {
         cin >> fire[i];
     }
-
+    sort(fire, fire + n);
+    
     for (int i = 0; i < m; ++i)
     {
         cin >> office[i];
     }
-
+    sort(office, office + m);
     int en = 0;
 
     //office
@@ -41,7 +42,7 @@ int main()
             //마지막
             else
             {
-                answer = max(answer, abs(office[m-1] - fire[en]));
+                answer = max(answer, abs(office[m - 1] - fire[en]));
                 en++;
             }
         }
