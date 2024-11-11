@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int n, m;
@@ -15,7 +16,7 @@ int main()
         cin >> fire[i];
     }
     sort(fire, fire + n);
-    
+
     for (int i = 0; i < m; ++i)
     {
         cin >> office[i];
