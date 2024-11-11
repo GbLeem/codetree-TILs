@@ -5,7 +5,7 @@ using namespace std;
 int n, m;
 int fire[100'002];
 int office[100'002];
-int answer = 0;
+long long answer = 0;
 
 int main()
 {
@@ -29,8 +29,8 @@ int main()
         //fire
         while (en < n)
         {
-            //if (st < m - 1)
-            //{
+            if (st < m - 1)
+            {
                 if (abs(office[st] - fire[en]) <= abs(office[st + 1] - fire[en]))
                 {
                     answer = max(answer, abs(office[st] - fire[en]));
@@ -38,13 +38,13 @@ int main()
                 }
                 else
                     break;
-            //}
-            // //마지막
-            // else
-            // {
-            //     answer = max(answer, abs(office[st] - fire[en]));
-            //     en++;
-            // }
+            }
+            //마지막
+            else
+            {
+                answer = max(answer, abs(office[st] - fire[en]));
+                en++;
+            }
         }
     }
     cout << answer;
