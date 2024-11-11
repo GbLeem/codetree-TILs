@@ -33,8 +33,11 @@ int main()
             {
                 if (abs(office[st] - fire[en]) <= abs(office[st + 1] - fire[en]))
                 {
-                    answer = max(answer, abs(office[st] - fire[en]));
+                    //answer = max(answer, abs(office[st] - fire[en]));
+                    if(answer < abs(office[st] - fire[en]))
+                        answer = abs(office[st] - fire[en]);
                     en++;
+                
                 }
                 else
                     break;
@@ -42,7 +45,9 @@ int main()
             //마지막
             else
             {
-                answer = max(answer, abs(office[st] - fire[en]));
+                //answer = max(answer, abs(office[st] - fire[en]));
+                if(answer < abs(office[st] - fire[en]))
+                        answer = abs(office[st] - fire[en]);
                 en++;
             }
         }
