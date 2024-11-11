@@ -1,11 +1,10 @@
 #include <iostream>
-#include <climits>
 using namespace std;
 
 int n, m;
 int fire[100'002];
 int office[100'002];
-long long answer = 0;
+int answer = 0;
 
 int main()
 {
@@ -13,7 +12,7 @@ int main()
 
     for (int i = 0; i < n; ++i)
     {
-        cin >> fire[i]; //가능성
+        cin >> fire[i];
     }
 
     for (int i = 0; i < m; ++i)
@@ -31,13 +30,10 @@ int main()
         {
             if (st < m - 1)
             {
-                if (abs(office[st] - fire[en]) <= abs(office[st + 1] - fire[en]))
-                {
-                    //answer = max(answer, abs(office[st] - fire[en]));
-                    if(answer < abs(office[st] - fire[en]))
-                        answer = abs(office[st] - fire[en]);
+                if (abs(office[st] - fire[en]) < abs(office[st + 1] - fire[en]))
+                {                
+                    answer = max(answer, abs(office[st] - fire[en]));
                     en++;
-                
                 }
                 else
                     break;
@@ -45,9 +41,7 @@ int main()
             //마지막
             else
             {
-                //answer = max(answer, abs(office[st] - fire[en]));
-                if(answer < abs(office[st] - fire[en]))
-                        answer = abs(office[st] - fire[en]);
+                answer = max(answer, abs(office[m-1] - fire[en]));
                 en++;
             }
         }
