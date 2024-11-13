@@ -46,7 +46,7 @@ int main()
             break;
     }
 
-    vector<int> ans = vec[k];
+    vector<int> ans = vec[k % vec.size()];
 
     for (int i = 1; i <= n; ++i)
     {
