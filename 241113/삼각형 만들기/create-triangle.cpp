@@ -10,7 +10,7 @@ int answer = 0;
 int getSize(pair<int, int> p1, pair<int, int> p2, pair<int, int> p3)
 {
     int result = 0;
-    result = 0.5 * abs((p1.first * p2.second + p2.first * p3.second + p3.first * p1.second) - (p2.first * p1.second + p3.first * p2.second + p1.first * p3.second));
+    result = abs((p1.first * p2.second + p2.first * p3.second + p3.first * p1.second) - (p2.first * p1.second + p3.first * p2.second + p1.first * p3.second));
 
     return result;
 }
@@ -52,7 +52,9 @@ int main()
                         cnt++;
                 }
                 if (cnt == 2)
-                    answer = max(answer, 2 * getSize(pos[i], pos[j], pos[k]));
+                {
+                    answer = max(answer, getSize(pos[i], pos[j], pos[k]));
+                }
             }
         }
     }
