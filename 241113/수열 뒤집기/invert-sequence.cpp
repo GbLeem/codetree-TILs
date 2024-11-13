@@ -40,10 +40,10 @@ int main()
     {
         Change(temp, a1, a2);
         Change(temp, b1, b2);        
-        vec.push_back(temp);
 
         if (temp == vec.front())
             break;
+        vec.push_back(temp);
     }
 
     vector<int> ans = vec[k % vec.size()];
