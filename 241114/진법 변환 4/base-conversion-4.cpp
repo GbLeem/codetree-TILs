@@ -10,9 +10,9 @@ int main()
 {
     cin >> str;
 
-    for(int i = str.size() - 1; i >= 0; --i)
+    for(int i = 0; i < str.size(); ++i)
     {
-        answer += (str[i] - '0') * pow(2, i);
+        answer += (str[i] - '0') * pow(2, str.size()-i-1);
     }
 
     cout << answer;
