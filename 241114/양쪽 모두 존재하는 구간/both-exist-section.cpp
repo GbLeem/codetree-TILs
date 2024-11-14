@@ -49,7 +49,10 @@ int main()
             if (Check())
             {
                 if(Check2())                
+                {
                     answer = min(answer, en - st + 1);
+                    break;
+                }
                 else
                     break;
             }
