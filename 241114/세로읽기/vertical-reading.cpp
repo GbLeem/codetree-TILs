@@ -9,7 +9,7 @@ int main()
     {
         for(int j = 0; j < 4; ++j)
         {
-            board[i][j] = 'A';
+            board[i][j] = '+';
         }
     }
     for(int i = 0; i < 4; ++i)
@@ -27,7 +27,7 @@ int main()
     {
         for(int j = 0; j < 4; ++j)
         {
-            if(board[i][j] != 'A')
+            if(board[i][j] != '+')
                 cout << board[i][j];
         }                
     }
