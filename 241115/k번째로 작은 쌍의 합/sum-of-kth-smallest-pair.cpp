@@ -54,7 +54,9 @@ int main()
                 smallIdx = i;
             }
         }
-        if (k == 0)
+        //cout << res[smallIdx].top() << "\n";
+
+        if (k == 1)
         {
             cout << res[smallIdx].top();
             break;
