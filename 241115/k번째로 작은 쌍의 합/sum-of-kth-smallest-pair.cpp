@@ -40,7 +40,7 @@ int main()
             pq3.push(vec1[i] + vec2[j]);
             pq.push(vec1[i] + vec2[j]);
         }
-        if(!pq.empty() && pq.top() < vec1[i] + vec2[j])
+        if(!pq.empty() && (pq.top() < (vec1[i] + vec2[j + 1])))
             break;
     }    
     while(k > 1)
