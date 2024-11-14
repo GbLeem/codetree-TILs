@@ -11,9 +11,9 @@ struct pair_hash
 };
 
 int n, m, k;
-unordered_map<pair<int, int>, int, pair_hash> um;
-int d[102][102];
-pair<int, int> board[102];
+unordered_multimap<pair<int, int>, int, pair_hash> um; //좌표 저장
+long long d[102][102];
+pair<int, int> board[202]; //좌표저장
 int idx = 0;
 
 void Print()
@@ -27,6 +27,7 @@ void Print()
         cout << "\n";
     }
 }
+
 int main()
 {
     cin >> n >> m;
@@ -36,10 +37,12 @@ int main()
     {
         int a, b, c, d;
         cin >> a >> b >> c >> d;
-        um[{a, b}] = idx;
+        //um[{a, b}] = idx;
+        um.insert({ { a, b }, idx });
         board[idx] = { c,d };
         idx++;
-        um[{c, d}] = idx;
+        //um[{c, d}] = idx;
+        um.insert({ {c,d}, idx });
         board[idx] = { a,b };
         idx++;
     }
@@ -49,48 +52,93 @@ int main()
     for (int x = 1; x <= n; ++x)
     {
         //(x,0) 이 있는 경우
+        bool canGo = true;
         if (um.find({ x, 0 }) != um.end())
-        {
-            int tempIdx = um[{x, 0}];
-            if (board[tempIdx].first == x - 1)
+        {            
+            auto tempIdxs = um.equal_range({ x, 0 }); // idx들 
+
+            for (auto it = tempIdxs.first; it != tempIdxs.second; ++it)
             {
-                continue;
+                //못가는 경우
+                if (board[it->second].first == x - 1)
+                {
+                    canGo = false;
+                    break;
+                }
             }
         }
-        d[x][0] = d[x - 1][0];
+        if(canGo)
+            d[x][0] = d[x - 1][0];
     }
+
     for (int y = 1; y <= m; ++y)
     {
+        bool canGo = true;
         if (um.find({ 0, y }) != um.end())
         {
-            int tempIdx = um[{0, y}];
-            if (board[tempIdx].second == y - 1)
+            auto tempIdxs = um.equal_range({ 0, y });
+
+            for (auto it = tempIdxs.first; it != tempIdxs.second; ++it)
             {
-                continue;
+                //못가는 경우
+                if (board[it->second].second == y - 1)
+                {
+                    canGo = false;
+                    break;
+                }
             }
         }
-        d[0][y] = d[0][y - 1];
+        if(canGo)
+            d[0][y] = d[0][y - 1];
     }
-    
-    for(int x = 1; x <= n; ++x)
+
+    for (int x = 1; x <= n; ++x)
     {
-        for(int y = 1; y <= m; ++y)
-        {            
+        for (int y = 1; y <= m; ++y)
+        {
+            /*if (x == n && y == m)
+            {
+                cout << "Ok\n";
+            }*/
+            bool canXY = true;
             if (um.find({ x, y }) != um.end())
             {
-                int tempIdx = um[{x, y}];
-                if (board[tempIdx].first == x - 1)
+                auto tempIdxs = um.equal_range({ x, y });
+
+                //막힌 경우
+                //자신보다 x가 하나 작은 좌표는 못씀
+                bool canX = true;
+                bool canY = true;
+                for (auto it = tempIdxs.first; it != tempIdxs.second; ++it)
                 {
-                    d[x][y] = d[x][y-1];
-                    continue;
+                    if (board[it->second].first == x - 1)
+                    {
+                        canX = false;
+                        canXY = false;
+                        //d[x][y] = d[x][y - 1];
+                        //continue;
+                    }
+                    //자신보다 y가 하나 작은 좌표는 못씀
+                    else if (board[it->second].second == y - 1)
+                    {
+                        canY = false;
+                        canXY = false;
+                        //d[x][y] = d[x - 1][y];
+                        //continue;
+                    }
                 }
-                else if (board[tempIdx].second == y - 1)
-                {
-                    d[x][y] = d[x-1][y];
-                    continue;
-                }                
+                if (canX)
+                    d[x][y] = d[x - 1][y];
+                else if (canY)
+                    d[x][y] = d[x][y - 1];
+                else if (canX && canY)
+                    canXY = true;
+                else if (!canX && !canY)
+                    d[x][y] = 0;
             }
-            d[x][y] = d[x - 1][y] + d[x][y - 1];
+            //안막힌 경우
+            if (canXY)
+                d[x][y] = d[x - 1][y] + d[x][y - 1];
         }
     }
     //Print();
