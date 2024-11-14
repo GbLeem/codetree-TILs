@@ -6,7 +6,7 @@ using namespace std;
 
 vector<int> v1;
 vector<int> v2;
-vector<priority_queue<int, vector<int>, greater<int>>> res;
+vector<priority_queue<long long, vector<long long>, greater<long long>>> res;
 
 int n, m, k;
 
@@ -30,7 +30,7 @@ int main()
 
     for (int i = 0; i < n; ++i)
     {
-        priority_queue<int, vector<int>, greater<int>> pq;
+        priority_queue<long long, vector<long long>, greater<long long>> pq;
         for (int j = 0; j < m; ++j)
         {
             pq.push(v1[i] + v2[j]);
