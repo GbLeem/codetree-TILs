@@ -1,54 +1,68 @@
 #include <iostream>
 #include <queue>
 #include <vector>
-#include <algorithm>
+#include <climits>
 using namespace std;
+
+vector<int> v1;
+vector<int> v2;
+vector<priority_queue<int, vector<int>, greater<int>>> res;
 
 int n, m, k;
 
-vector<int> vec1;
-vector<int> vec2;
-priority_queue<int, vector<int>, greater<int>> pq3;
-priority_queue<int> pq;
-
-int main() 
+int main()
 {
     cin >> n >> m >> k;
 
-    for(int i = 0; i < n; ++i)
+    for (int i = 0; i < n; ++i)
     {
         int num;
         cin >> num;
-        vec1.push_back(num);
+        v1.push_back(num);
     }
 
-    for(int i = 0; i < m; ++i)
+    for (int i = 0; i < m; ++i)
     {
         int num;
         cin >> num;
-        vec2.push_back(num);
+        v2.push_back(num);
     }
 
-    sort(vec1.begin(), vec1.end());
-    sort(vec2.begin(), vec2.end());
-
-    for(int i = 0; i < vec1.size(); ++i)
+    for (int i = 0; i < n; ++i)
     {
-        int j = 0;
-        for(j = 0; j < vec2.size(); ++j)
+        priority_queue<int, vector<int>, greater<int>> pq;
+        for (int j = 0; j < m; ++j)
         {
-            pq3.push(vec1[i] + vec2[j]);
-            pq.push(vec1[i] + vec2[j]);
+            pq.push(v1[i] + v2[j]);
         }
-        if(!pq.empty() && (pq.top() < (vec1[i] + vec2[j + 1])))
-            break;
-    }    
-    while(k > 1)
+        res.push_back(pq);
+    }
+
+    while (1)
     {
-        //cout << pq3.top()<<"\n";
-        pq3.pop();
+        int smallValue = INT_MAX;
+        int smallIdx = 0;
+
+        for (int i = 0; i < res.size(); ++i)
+        {
+            auto pqi = res[i];
+            int temp = pqi.top();
+
+            if (smallValue > temp)
+            {
+                smallValue = temp;
+                smallIdx = i;
+            }
+        }
+        if (k == 0)
+        {
+            cout << res[smallIdx].top();
+            break;
+        }
+
+        res[smallIdx].pop();
         k--;
     }
-    cout << pq3.top();
+
     return 0;
 }
