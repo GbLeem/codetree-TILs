@@ -8,7 +8,7 @@ int n, m, k;
 
 vector<int> vec1;
 vector<int> vec2;
-priority_queue<int, vector<int>, greater<int>> pq3;
+priority_queue<long long, vector<long long>, greater<long long>> pq3;
 
 void Print1(const vector<int>& vec)
 {
@@ -36,6 +36,7 @@ int main()
         cin >> num;
         vec2.push_back(num);
     }
+
     sort(vec1.begin(), vec1.end());
     sort(vec2.begin(), vec2.end());
 
