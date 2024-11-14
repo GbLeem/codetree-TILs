@@ -46,11 +46,13 @@ int main()
         }
     }
 
-    while (pq3.size() > k - 1)
+    int size = pq3.size();
+    size -= k;
+    while (size > 0)
     {
         //cout << pq3.top()<<"\n";
         pq3.pop();
-        k--;
+        size--;
     }
     cout << pq3.top();
     return 0;
