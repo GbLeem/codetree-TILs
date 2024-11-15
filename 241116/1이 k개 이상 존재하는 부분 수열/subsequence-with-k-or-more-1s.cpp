@@ -25,17 +25,20 @@ int main()
         two++;
 
     for (int st = 0; st < n; ++st)    //1을 가리킨다.
-    {        
-        while (en + 1 > st && one < k)
+    {
+        while (one < k && en + 1 < n)
         {
+            if (en + 1 == n)
+                break;
             en++;
             if (board[en] == 1)
                 one++;
             else
-                two++;            
+                two++;           
         }
-        answer = min(answer, en - st + 1);
-        
+        if(one >= k)
+            answer = min(answer, en - st + 1);
+
         if (board[st] == 1)
             one--;
         else
