@@ -1,69 +1,72 @@
 #include <iostream>
-#include <stack>
+#include <climits>
+#include <queue>
 using namespace std;
 
 int n, m;
-stack<int> s;
+priority_queue<int, vector<int>, greater<int>> pq;
 int answer = 0;
 
 int main()
 {
     cin >> n >> m;
 
-    int tempH = -1;
-
+    int maxH = INT_MIN;
     for (int i = 0; i < m; ++i)
     {
         int h;
-
         cin >> h;
 
-        if (s.empty()) 
-        {
-            if (tempH == -1)
-                tempH = h;
-            else
-            {
-                if (tempH > h)
-                {
-                    s.push(h);
-                }
-                else
-                    tempH = h;
-            }
-        }
-        //비어있지 않을 때 (물이 고임)
+        if (maxH == INT_MIN)
+            maxH = h;
         else
-        {   
-            //맨 마지막
-            if (i == m - 1)
+        {
+            //작은 값들 들어올때 
+            if (maxH > h)
             {
-                if (!s.empty() && s.top() < h)
+                pq.push(h);
+            }
+            //큰 값 만났을때
+            else if (maxH < h)
+            {
+                //비어있으면 리셋
+                if (pq.empty())
                 {
-                    int minH = min(h, tempH);
-                    while (!s.empty())
+                    maxH = h;
+                }
+                //안비어있으면
+                else
+                {
+                    //마지막인 경우
+                    if (i == m - 1 && h < maxH)
                     {
-                        answer += (minH - s.top());
-                        s.pop();
+                        while (!pq.empty())
+                        {
+                            if (pq.top() < h)
+                            {
+                                answer += (h - pq.top());
+                                pq.pop();
+                            }
+                            else
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        int minH = min(maxH, h);
+                        while (!pq.empty())
+                        {
+                            answer += (minH - pq.top());
+                            pq.pop();
+                        }
+                        maxH = h;
                     }
                 }
-            }
-            else if (tempH > h)
-                s.push(h);
-            //물보다 높은 벽
-            else if (s.top() < h)
-            {
-                int minH = min(h, tempH);
-                while (!s.empty())
-                {
-                    answer += (minH - s.top());
-                    s.pop();
-                }
-                tempH = h;
-            }            
-        }
 
+            }
+        }
     }
+
     cout << answer;
     return 0;
 }
