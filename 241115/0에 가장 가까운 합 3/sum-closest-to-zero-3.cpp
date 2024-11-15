@@ -6,6 +6,7 @@ using namespace std;
 int n;
 int board[100'002];
 int answer = INT_MAX;
+int realAnswer = 0;
 
 int main()
 {
@@ -16,7 +17,7 @@ int main()
     }
     sort(board, board + n);
 
-    int en = n - 1;
+    int en = n - 1;    
     for (int st = 0; st < n; ++st)
     {
         while (en - 1 > st)
@@ -24,12 +25,16 @@ int main()
             int dist = abs(board[en] + board[st]);
             if (dist > abs(board[en - 1] + board[st]))
                 en--;
-            else
-                break;
+            else                            
+                break;            
         }
-        answer = min(answer, board[en] + board[st]);
+        if (answer >= abs(board[en] + board[st]))
+        {
+            answer = abs(board[en] + board[st]);            
+            realAnswer = board[en] + board[st];
+        }        
     }
 
-    cout << answer;
+    cout << realAnswer;
     return 0;
 }
