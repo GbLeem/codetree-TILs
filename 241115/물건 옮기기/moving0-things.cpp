@@ -6,6 +6,18 @@ int n;
 vector<vector<int>> vec(12);
 int answer = 0;
 
+void Print()
+{
+    for(int i = 0; i < vec.size(); ++i)
+    {
+        for(int j = 0; j < vec[i].size(); ++j)
+        {
+            cout << vec[i][j] <<" ";
+        }
+        cout << "\n";
+    }
+}
+
 int main() 
 {
     cin >> n;    
@@ -18,12 +30,14 @@ int main()
         vec[num].push_back(pos);
     }
 
+    //Print();
     for(int i = 0; i < vec.size(); ++i)
     {
         int last = -1;
         int cnt = 0;
         for(int j = 0; j < vec[i].size(); ++j)
         {
+            //처음 처리
             if(last == -1)
             {
                 if(vec[i][j] == 1)
@@ -46,7 +60,7 @@ int main()
                     if(vec[i][j] == 1)
                     {
                         cnt++;
-                        last = 0;
+                        last = 1;
                     }
                 }
             }            
