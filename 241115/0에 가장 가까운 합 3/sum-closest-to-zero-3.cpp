@@ -17,28 +17,29 @@ int main()
     }
     sort(board, board + n);
 
-    int en = n - 1;    
-    bool ok = false;
+    int en = n - 1;
+
     for (int st = 0; st < n; ++st)
     {
-        while (en - 1 >= st)
+        while (en - 1 > st)
         {
             int dist = abs(board[en] + board[st]);
             if (dist > abs(board[en - 1] + board[st]))
                 en--;
-            else                            
-                break;            
+            else
+                break;
         }
-        if (en == st)
-            break;
-        if (answer > abs(board[en] + board[st]))
+        if (en > st)
         {
-            answer = abs(board[en] + board[st]);            
-            realAnswer = board[en] + board[st];
-        }        
-        else if(answer == abs(board[en] + board[st]))
-        {
-            realAnswer = min(realAnswer, board[en] + board[st]);
+            if (answer > abs(board[en] + board[st]))
+            {
+                answer = abs(board[en] + board[st]);
+                realAnswer = board[en] + board[st];
+            }
+            else if (answer == abs(board[en] + board[st]))
+            {
+                realAnswer = min(realAnswer, board[en] + board[st]);
+            }
         }
     }
 
