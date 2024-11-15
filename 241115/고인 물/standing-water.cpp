@@ -30,7 +30,7 @@ int main()
             {
                 while (!s.empty())
                 {
-                    while(s.top() < h)
+                    while(!s.empty() || s.top() < h)
                     {
                         answer += (h - s.top());
                         s.pop();
