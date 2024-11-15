@@ -28,6 +28,8 @@ int main()
                 {
                     s.push(h);
                 }
+                else
+                    tempH = h;
             }
         }
         //비어있지 않을 때 (물이 고임)
