@@ -21,7 +21,7 @@ int main()
     bool ok = false;
     for (int st = 0; st < n; ++st)
     {
-        while (en - 1 > st)
+        while (en - 1 >= st)
         {
             int dist = abs(board[en] + board[st]);
             if (dist > abs(board[en - 1] + board[st]))
@@ -29,6 +29,8 @@ int main()
             else                            
                 break;            
         }
+        if (en == st)
+            break;
         if (answer > abs(board[en] + board[st]))
         {
             answer = abs(board[en] + board[st]);            
