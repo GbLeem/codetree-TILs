@@ -27,7 +27,7 @@ int main()
                 pq.push(h);
             }
             //큰 값 만났을때
-            else if (maxH < h)
+            else if (maxH <= h)
             {
                 //비어있으면 리셋
                 if (pq.empty())
