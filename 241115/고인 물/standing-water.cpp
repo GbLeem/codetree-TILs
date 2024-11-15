@@ -1,31 +1,65 @@
 #include <iostream>
 #include <stack>
+#include <climits>
 using namespace std;
 
 int n, m;
 stack<int> s;
 int answer = 0;
 
-int main() 
+int main()
 {
     cin >> n >> m;
-    for(int i = 0; i < m; ++i)
+
+    int tempH = -1;
+    for (int i = 0; i < m; ++i)
     {
         int h;
+
         cin >> h;
 
-        if(s.empty())
-            s.push(h);
-        else
+        if (tempH == -1)
         {
-            if(s.top() > h && i != m-1)
+            tempH = h;
+        }
+        else //두번째 부터
+        {
+            if (i == m - 1)
             {
-                answer += (s.top() - h);                
+                if (!s.empty())
+                {
+                    int minH = min(h, tempH);
+                    while (!s.empty())
+                    {
+                        answer += (minH - s.top());
+                        s.pop();
+                    }
+                }
             }
-            else if(s.top() <= h)
+            //작은 높이 
+            else if (tempH > h)
             {
-                s.pop();
                 s.push(h);
+            }
+            //큰 높이
+            else
+            {
+                if (s.empty())
+                    tempH = h;                    
+                else
+                {                
+                    if (s.top() < h)
+                    {
+                        int minH = min(h, tempH);
+                        while (!s.empty())
+                        {
+                            answer += (minH - s.top());
+                            s.pop();
+                        }
+                        tempH = h;
+
+                    }
+                }
             }
         }
     }
