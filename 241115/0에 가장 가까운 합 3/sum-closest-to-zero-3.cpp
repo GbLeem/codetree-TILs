@@ -32,7 +32,7 @@ int main()
         if (answer > abs(board[en] + board[st]))
         {
             answer = abs(board[en] + board[st]);            
-            realAnswer = min(realAnswer, board[en] + board[st]);
+            realAnswer = board[en] + board[st];
         }        
         else if(answer == abs(board[en] + board[st]))
         {
