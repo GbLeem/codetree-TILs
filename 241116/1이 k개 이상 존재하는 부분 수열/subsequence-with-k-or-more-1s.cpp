@@ -5,6 +5,7 @@ using namespace std;
 int n, k;
 int board[1'000'002];
 int answer = INT_MAX;
+
 int main()
 {
     cin >> n >> k;
@@ -34,6 +35,7 @@ int main()
                 two++;            
         }
         answer = min(answer, en - st + 1);
+        
         if (board[st] == 1)
             one--;
         else
