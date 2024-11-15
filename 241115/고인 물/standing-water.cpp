@@ -18,7 +18,7 @@ int main()
             s.push(h);
         else
         {
-            if(s.top() > h)
+            if(s.top() > h && i != m-1)
             {
                 answer += (s.top() - h);                
             }
