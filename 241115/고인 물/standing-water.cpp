@@ -6,6 +6,7 @@ using namespace std;
 int n, m;
 priority_queue<int, vector<int>, greater<int>> pq;
 int answer = 0;
+int board[505];
 
 int main()
 {
@@ -14,9 +15,12 @@ int main()
     int maxH = INT_MIN;
     for (int i = 0; i < m; ++i)
     {
-        int h;
-        cin >> h;
+        cin >> board[i];
+    }
 
+    for(int i = 0; i < m; ++i)
+    {       
+        int h = board[i];
         if (maxH == INT_MIN)
             maxH = h;
         else
