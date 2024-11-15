@@ -1,10 +1,10 @@
 #include <iostream>
 #include <climits>
-#include <queue>
+#include <stack>
 using namespace std;
 
 int n, m;
-priority_queue<int, vector<int>, greater<int>> pq;
+stack<int> s;
 unsigned long answer = 0;
 int board[505];
 
@@ -26,29 +26,29 @@ int main()
         else
         {
             //마지막인 경우
-            if (i == m - 1 && h < maxH)
+            if (i == m - 1)
             {
-                while (!pq.empty())
+                while (!s.empty())
                 {
-                    if (pq.top() < h)
+                    while(s.top() < h)
                     {
-                        answer += (h - pq.top());
-                        pq.pop();
+                        answer += (h - s.top());
+                        s.pop();
                     }
-                    else
-                        break;
+                    h = s.top();
                 }
+
             }
             //작은 값들 들어올때 
             else if (maxH > h)
             {
-                pq.push(h);
+                s.push(h);
             }
             //큰 값 만났을때
             else if (maxH <= h)
             {
                 //비어있으면 리셋
-                if (pq.empty())
+                if (s.empty())
                 {
                     maxH = h;
                 }
@@ -56,10 +56,10 @@ int main()
                 else
                 {                                    
                     int minH = min(maxH, h);
-                    while (!pq.empty())
+                    while (!s.empty())
                     {
-                        answer += (minH - pq.top());
-                        pq.pop();
+                        answer += (minH - s.top());
+                        s.pop();
                     }
                     maxH = h;                    
                 }
