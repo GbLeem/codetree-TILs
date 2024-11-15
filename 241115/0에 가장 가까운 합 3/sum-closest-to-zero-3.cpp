@@ -22,7 +22,7 @@ int main()
     {
         while (en - 1 > st)
         {
-            int dist = abs(board[en] + board[st]);
+            long long dist = abs(board[en] + board[st]);
             if (dist > abs(board[en - 1] + board[st]))
                 en--;
             else                            
