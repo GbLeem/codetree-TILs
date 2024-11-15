@@ -15,7 +15,7 @@ int main()
         cin >> board[i];
     }
     
-    sort(board, board + n); // 1 2 3 4 5
+    //sort(board, board + n); // 1 2 3 4 5
 
     int temp = 0;
     for(int i = 0; i < n; ++i)
@@ -34,6 +34,7 @@ int main()
     }
     if(temp != 0)
         answer++;
+
     cout << answer;
 
     return 0;
