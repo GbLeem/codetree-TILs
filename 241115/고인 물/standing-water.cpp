@@ -1,6 +1,5 @@
 #include <iostream>
 #include <stack>
-#include <climits>
 using namespace std;
 
 int n, m;
@@ -12,21 +11,32 @@ int main()
     cin >> n >> m;
 
     int tempH = -1;
+
     for (int i = 0; i < m; ++i)
     {
         int h;
 
         cin >> h;
 
-        if (tempH == -1)
+        if (s.empty()) 
         {
-            tempH = h;
+            if (tempH == -1)
+                tempH = h;
+            else
+            {
+                if (tempH > h)
+                {
+                    s.push(h);
+                }
+            }
         }
-        else //두번째 부터
-        {
+        //비어있지 않을 때 (물이 고임)
+        else
+        {   
+            //맨 마지막
             if (i == m - 1)
             {
-                if (!s.empty())
+                if (!s.empty() && s.top() < h)
                 {
                     int minH = min(h, tempH);
                     while (!s.empty())
@@ -36,32 +46,21 @@ int main()
                     }
                 }
             }
-            //작은 높이 
             else if (tempH > h)
-            {
                 s.push(h);
-            }
-            //큰 높이
-            else
+            //물보다 높은 벽
+            else if (s.top() < h)
             {
-                if (s.empty())
-                    tempH = h;                    
-                else
-                {                
-                    if (s.top() < h)
-                    {
-                        int minH = min(h, tempH);
-                        while (!s.empty())
-                        {
-                            answer += (minH - s.top());
-                            s.pop();
-                        }
-                        tempH = h;
-
-                    }
+                int minH = min(h, tempH);
+                while (!s.empty())
+                {
+                    answer += (minH - s.top());
+                    s.pop();
                 }
-            }
+                tempH = h;
+            }            
         }
+
     }
     cout << answer;
     return 0;
