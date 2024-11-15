@@ -5,7 +5,7 @@ using namespace std;
 
 int n, m;
 priority_queue<int, vector<int>, greater<int>> pq;
-int answer = 0;
+unsigned long answer = 0;
 int board[505];
 
 int main()
