@@ -4,7 +4,7 @@ using namespace std;
 
 int n, m;
 int board[55];
-int answer = 1;
+int answer = 0;
 
 int main() 
 {
@@ -21,12 +21,19 @@ int main()
     for(int i = 0; i < n; ++i)
     {
         temp += board[i];
-        if(temp >= m)
+        if(temp > m)
         {
             answer++;
-            m += m;
+            temp = board[i];
+        }
+        if(temp == m)
+        {
+            answer++;
+            temp = 0;
         }
     }
+    if(temp != 0)
+        answer++;
     cout << answer;
 
     return 0;
