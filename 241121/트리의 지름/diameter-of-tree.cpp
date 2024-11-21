@@ -31,8 +31,8 @@ pair<int, int> FindLargestVertex(int cur)
     //초기화
     for(int i = 0; i < n; ++i)
     {
-        vis[i] = 0;
-        dist[i] = 0;
+        vis[i + 1] = 0;
+        dist[i + 1] = 0;
     }
 
     vis[cur] = 1;
@@ -62,8 +62,8 @@ int main()
         int u, v, l;
         cin >> u >> v >> l;
 
-        adj[u].push_back({v,l});
-        adj[v].push_back({u,l});
+        adj[u].push_back({v, l});
+        adj[v].push_back({u, l});
     }
 
     int far_vertex;
