@@ -53,7 +53,8 @@ int main()
     DFS(m);
     leaf = 0;
 
-    DFS(root);
+    if(!vis[root])
+        DFS(root);
     cout << leaf;
 
     return 0;
