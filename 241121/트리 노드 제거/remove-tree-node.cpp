@@ -12,15 +12,19 @@ int leaf = 0;
 void DFS(int cur)
 {
     vis[cur] = 1;
+    bool check = false;
     for (auto nxt : adj[cur])
     {
         if (!vis[nxt] && nxt != parent[cur])
         {
+            check = true;
             vis[nxt] = 1;
-            DFS(nxt);
-            leaf++;
+            DFS(nxt);            
+            //leaf++;
         }
     }
+    if (!check)
+        leaf++;
 }
 
 int main()
