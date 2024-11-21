@@ -20,7 +20,7 @@ void DFS(int cur, int total_dist)
         if(!vis[v])
         {
             vis[v] = 1;
-            dist[cur] = total_dist + l;
+            dist[v] = total_dist + l;
             DFS(v, total_dist + l);
         }
     }
@@ -44,9 +44,9 @@ pair<int, int> FindLargestVertex(int cur)
 
     for(int i = 0; i < n;++i)
     {
-        if(dist[i] > far_dist)
+        if(dist[i + 1] > far_dist)
         {
-            far_dist = dist[i];
+            far_dist = dist[i + 1];
             far_vertex = i + 1;
         }
     }
