@@ -5,8 +5,8 @@
 using namespace std;
 
 int m;
-vector<int> adj[1002];
-int vis[1002];
+vector<int> adj[10002];
+int vis[10002];
 
 unordered_map<int, int> cycle;
 set<int> s;
