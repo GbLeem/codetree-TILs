@@ -9,8 +9,8 @@ int parentIdx = -1;
 int lastnum = 0;
 int answer = 0;
 
-int vis[1002];
-int dist[1002];
+int vis[1'000'002];
+int dist[1'000'002];
 
 void DFS(int cur)
 {
