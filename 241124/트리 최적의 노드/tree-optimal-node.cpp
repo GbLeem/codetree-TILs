@@ -4,10 +4,10 @@
 using namespace std;
 
 int n;
-vector<int> adj[100002];
+vector<int> adj[100'002];
 int answer = INT_MAX;
-int dist[100002];
-int vis[100002];
+int dist[100'002];
+int vis[100'002];
 int maxDist = 0;
 
 void DFS(int cur)
@@ -37,7 +37,7 @@ int main()
     }
 
     //모든 노드로 DFS해서 가장 긴 길이가 짧은 것 구하기
-    for (int i = 1; i <= n; ++i)
+    for (int i = 1; i <= n/2; ++i)
     {
         //초기화
         maxDist = 0;
