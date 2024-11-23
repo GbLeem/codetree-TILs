@@ -3,7 +3,7 @@
 using namespace std;
 
 int n, k;
-vector<int> adj[1002];
+vector<int> adj[1'000'002];
 int node[1'000'002];
 int parentIdx = -1;
 int lastnum = 0;
