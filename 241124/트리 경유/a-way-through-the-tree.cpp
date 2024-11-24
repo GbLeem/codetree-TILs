@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 int n, q;
@@ -22,13 +23,15 @@ int main()
             //올라가다가 못가는 곳 만남
             if(vis[temp])
             {
-                while(1)
-                {                    
-                    if(vis[temp/2] != 1)
-                        break;   
-                    temp /= 2;                                     
+                //가장 위의 불가능 노드 찾기
+                int minValue = INT_MAX;
+                while(temp != 1)
+                {           
+                    if(vis[temp] == 1)
+                        minValue = min(minValue, temp);         
+                    temp/=2;
                 }
-                cout << temp <<"\n";
+                cout << minValue <<"\n";
                 break;
             }            
             //루트 도착
