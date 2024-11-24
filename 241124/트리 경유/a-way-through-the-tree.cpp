@@ -26,12 +26,13 @@ int main()
                 {                    
                     if(vis[temp/2] != 1)
                         break;   
-                    temp/=2;                                     
+                    temp /= 2;                                     
                 }
                 cout << temp <<"\n";
                 break;
             }            
-            if(temp == 1)
+            //루트 도착
+            else if(temp == 1)
             {
                 cout << 0 << "\n";
                 vis[dest] = 1;  
