@@ -8,7 +8,7 @@ int main()
 {
     cin >> n >> q;
 
-    for(int i = 1; i <= q; ++i)
+    for(int i = 0; i < q; ++i)
     {
         int dest;
         cin >> dest;
@@ -17,8 +17,14 @@ int main()
         bool fail = false;
         
         //루트 까지 가기
-        while(temp != 1)
+        while(1)
         {   
+            if(temp == 1)
+            {
+                cout << 0 << "\n";
+                vis[dest] = 1;  
+                break;
+            }
             temp /= 2;
 
             //올라가다가 못가는 곳 만남
@@ -28,15 +34,8 @@ int main()
                 fail = true;
                 break;    
             }            
-        }   
-        if(!fail)
-        {
-            cout << 0 << "\n";
-            vis[dest] = 1;
-        }
+        }           
     }
-
-
 
     return 0;
 }
