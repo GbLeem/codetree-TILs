@@ -19,13 +19,17 @@ int main()
         //루트 까지 가기
         while(1)
         {   
-
             //올라가다가 못가는 곳 만남
             if(vis[temp])
             {
+                while(1)
+                {                    
+                    if(vis[temp/2] != 1)
+                        break;   
+                    temp/=2;                                     
+                }
                 cout << temp <<"\n";
-                fail = true;
-                break;    
+                break;
             }            
             if(temp == 1)
             {
