@@ -2,7 +2,7 @@
 using namespace std;
 
 int n, q;
-int vis[200'002];
+int vis[2'000'002];
 
 int main() 
 {
