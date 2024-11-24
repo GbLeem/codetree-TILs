@@ -25,7 +25,6 @@ int main()
                 vis[dest] = 1;  
                 break;
             }
-            temp /= 2;
 
             //올라가다가 못가는 곳 만남
             if(vis[temp])
@@ -34,6 +33,7 @@ int main()
                 fail = true;
                 break;    
             }            
+            temp /= 2;
         }           
     }
 
