@@ -4,72 +4,57 @@ using namespace std;
 
 int n;
 char board[100];
-unordered_map<char,int> alpha;
+unordered_map<char, char> lc;
+unordered_map<char, char> rc;
+
 //{'.','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
-void preorder(int cur)
+void preorder(char cur)
 {
-    cout << board[cur];
-    if(board[cur*2])
-        preorder(cur*2);
-    if(board[cur*2+1])
-        preorder(cur*2+1);
+    cout << cur;
+    if(lc[cur])
+        preorder(lc[cur]);
+    if(rc[cur])
+        preorder(rc[cur]);
 }
 
-void inorder(int cur)
+void inorder(char cur)
 {
-    if(board[cur*2])
-        inorder(cur*2);
-    cout<<board[cur];
-    if(board[cur*2+1])
-        inorder(cur*2+1);
+    if(lc[cur])
+        inorder(lc[cur]);
+    cout<<cur;
+    if(rc[cur])
+        inorder(rc[cur]);
 }
 
-void postorder(int cur)
+void postorder(char cur)
 {
-    if(board[cur*2])
-        postorder(cur*2);
-    if(board[cur*2 + 1])
-        postorder(cur*2+1);
-    cout<<board[cur];
+    if(lc[cur])
+        postorder(lc[cur]);
+    if(rc[cur])
+        postorder(rc[cur]);
+    cout<<cur;
 }
 
 int main() 
 {
-    char ch = 'A';
-    for(int i = 1; i <= 26; ++i)
-    {
-        alpha[ch] = i;
-        ch++;
-    }
-
     cin >> n;
     
     for(int i = 1; i <= n; ++i)
     {
         char p, l, r;
         cin >> p >> l >> r;
-        
-        int idx = alpha[p];
-
-        board[idx] = p;
         if('A' <= l && l <= 'Z')
-        {
-            board[idx * 2] = l;
-            alpha[l] = idx*2;
-        }
-        if('A' <= r && r <= 'Z')           
-        {
-            board[idx * 2 + 1] = r;        
-            alpha[r] = idx*2+1;
-        } 
+            lc[p] = l;
+        if('A' <= r && r <= 'Z')
+            rc[p] = r;        
     }
 
-    preorder(1);
+    preorder('A');
     cout<<"\n";
-    inorder(1);
+    inorder('A');
     cout<<"\n";
-    postorder(1);
+    postorder('A');
     
 
     return 0;
