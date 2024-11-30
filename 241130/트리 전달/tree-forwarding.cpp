@@ -21,7 +21,7 @@ void DFS(int cur)
             DFS(nxt);
         }
     }
-
+}
 int main()
 {
     cin >> n >> m;
