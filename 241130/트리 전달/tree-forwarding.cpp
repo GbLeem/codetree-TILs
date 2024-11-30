@@ -17,7 +17,7 @@ void DFS(int cur)
         if (!vis[nxt])
         {
             vis[nxt] = 1;
-            dp[nxt] = dp[cur] + cost[nxt];
+            dp[nxt] += dp[cur];
             DFS(nxt);
         }
     }
@@ -30,7 +30,7 @@ int main()
     {
         int num;
         cin >> num;
-        parent[i] = num; //-1 1 2 3 4 
+        
         if (num != -1)
         {
             adj[num].push_back(i);         
@@ -42,11 +42,10 @@ int main()
         int node, value;
         cin >> node >> value;
 
-        cost[node] = value;
+        dp[node] += value;
     }
 
-    
-    vis[1] = 1;
+        
     DFS(1);
 
     for (int i = 1; i <= n; ++i)
