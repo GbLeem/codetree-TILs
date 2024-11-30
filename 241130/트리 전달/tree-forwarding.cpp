@@ -33,8 +33,7 @@ int main()
         parent[i] = num; //-1 1 2 3 4 
         if (num != -1)
         {
-            adj[i].push_back(num);
-            adj[num].push_back(i); 
+            adj[num].push_back(i);         
         }
     }
 
