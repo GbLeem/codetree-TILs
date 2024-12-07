@@ -21,7 +21,7 @@ int main()
     //l 0  2  1  3  4
     //r 2  1  3  4  0
     
-    for(int i = 1; i < n; ++i)
+    for(int i = 1; i < n-1; ++i)
     {
         if(board[i + 1] - board[i] > board[i] - board[i-1])
             answer++;
