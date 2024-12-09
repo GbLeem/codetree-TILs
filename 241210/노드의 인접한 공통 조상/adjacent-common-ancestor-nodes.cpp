@@ -7,16 +7,16 @@ vector<int> adj[10'002];
 int parent[10'002];
 int depth[10'002];
 int root[10'002];
-int vis[10'002];
+//int vis[10'002];
 int realRoot = 0;
 
 void DFS(int cur)
 {
     for (int nxt : adj[cur])
     {           
-        if (!vis[nxt])
+        if (parent[nxt] != cur)
         {
-            vis[nxt] = 1;
+            //vis[nxt] = 1;
             depth[nxt] = depth[cur] + 1;
             DFS(nxt);                
         }
@@ -51,7 +51,7 @@ int main()
     int u, v;
     cin >> u >> v;
 
-    vis[realRoot] = 1;
+    //vis[realRoot] = 1;
     DFS(realRoot);
 
 
