@@ -63,7 +63,7 @@ int main()
         }
         else
         {
-            tempV = parent[v];
+            v = parent[v];
         }
 
         if (u == v)
