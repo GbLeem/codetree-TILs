@@ -6,6 +6,7 @@ using namespace std;
 
 unordered_map<int, int> um;
 unordered_multimap<int, int> umm;
+vector<int> answer;
 int n, k;
 
 int main()
@@ -39,7 +40,7 @@ int main()
         for(auto it = range.first; it != range.second; ++it)
         {
             temp.push_back(it->second);                           
-            k--;  
+            //k--;  
             s++;
         }
         i += s - 1;
@@ -48,14 +49,20 @@ int main()
         {
             sort(temp.begin(), temp.end(), greater<int>());
             for (auto t : temp)
-                cout << t << " ";
+                answer.push_back(t);
         }
         else
-            cout << temp.back() << " ";
+        {
+            answer.push_back(temp.back());
+            //cout << temp.back() << " ";
+        }
 
-        if (k == 0)
+        if(answer.size() > k)
             break;
     }
+
+    for(int i = 0; i < k; ++i)
+        cout << answer[i] <<" ";
 
 
     return 0;
