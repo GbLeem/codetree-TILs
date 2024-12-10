@@ -19,35 +19,51 @@ int main()
 
     for (int i = 0; i < n; ++i)
     {
-        bool find = false;
         int temp = k - board[i];
-        um[board[i]]--; //1
+        um[board[i]]--;
 
+        int reset1 = -1;
+        int reset2 = -1;
         //두개의 합이 temp인 것 찾기
-        for (int j = i + 1; j < n; ++j)
+
+        for (int j = 0; j < n; ++j)
         {
-            //other 과 board[j]
-            int other = temp - board[j]; //2
-            um[board[j]]--;
+            int other = temp - board[j];
 
-            if (um[other] > 0)
+            if (um[other] >= 1)
             {
-                find = true;
-                answer++;
-            }
-
-            if (!find)
-            {
-                um[board[j]]++;
-                um[board[i]]++;
-            }
+                if (other == board[j])
+                {
+                    um[other]--;
+                    answer += um[other]; // 4 3 2 1 
+                    reset1 = other;
+                    reset2 = other;
+                }
+                else
+                {
+                    if (um[board[j]] > 0)
+                    {
+                        answer += um[other];
+                        um[board[j]] = 0;
+                        reset1 = other;
+                        reset2 = board[j];                        
+                    }
+                }
+            }            
+        }
+        //뭐라도 한 번 찾은 경우
+        if (reset1 != -1 && reset2 != -1)
+        {
+            um[reset1]++;
+            um[reset2]++;           
+        }
+        else
+        {
+            um[board[i]]++;
         }
     }
 
     cout << answer;
-
-
-
 
     return 0;
 }
