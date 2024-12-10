@@ -34,10 +34,18 @@ int main()
             {
                 if (other == board[j])
                 {
-                    um[other]--;
-                    answer += um[other]; // 4 3 2 1 
-                    reset1 = other;
-                    reset2 = other;
+                    if (other != board[i])
+                    {
+                        um[other]--;
+                        answer += um[other]; // 4 3 2 1 
+                        reset1 = other;
+                        reset2 = other;
+                    }
+                    else
+                    {                        
+                        answer += um[other];
+                        um[other]--;
+                    }
                 }
                 else
                 {
@@ -46,16 +54,16 @@ int main()
                         answer += um[other];
                         um[board[j]] = 0;
                         reset1 = other;
-                        reset2 = board[j];                        
+                        reset2 = board[j];
                     }
                 }
-            }            
+            }
         }
         //뭐라도 한 번 찾은 경우
         if (reset1 != -1 && reset2 != -1)
         {
             um[reset1]++;
-            um[reset2]++;           
+            um[reset2]++;
         }
         else
         {
