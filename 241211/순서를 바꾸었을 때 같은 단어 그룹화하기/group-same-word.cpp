@@ -19,7 +19,7 @@ int main()
         char board[1002];
         for(int j = 0; j < str.size(); ++j)
         {
-            board[i] = str[i];
+            board[j] = str[j];
         }
         sort(board, board + str.size());
 
