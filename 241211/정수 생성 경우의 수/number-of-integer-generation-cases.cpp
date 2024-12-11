@@ -1,47 +1,108 @@
 #include <iostream>
-#include <cmath>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <unordered_map>
 using namespace std;
 
 string str;
-int n;
+vector<pair<int, char>>ans;
+set<string> s;
+unordered_map<char, int> um;
 int answer = 0;
 
-int main() 
+void Print()
 {
-    cin >> str;
-    n = str.size();
-    answer = pow(2, n - 1);    
-    
-    //연속된 숫자 
-    int temp = 0;
-
-    for(int i = 0; i < str.size() - 1; ++i)
+    for (auto a : ans)
     {
-        if(str[i] == str[i + 1])
+        cout << a.second << " ";
+    }
+    cout << "\n";
+}
+void Check()
+{
+    string temp;
+    for(auto a : ans)
+    {
+        temp += a.second;
+    }
+    s.insert(temp);
+}
+void Choose(int cur)
+{
+    if (cur == str.size() + 1)
+    {
+        //끝
+        //Print();
+        //answer++;
+        Check();
+        //s.insert(ans);
+        return;
+    }
+
+    //새로 들어올 값의 인덱스
+    for (int i = 0; i < str.size(); ++i)
+    {
+        if (um[str[i]] > 0)
         {
-            temp++;
-        }
-        else
-        {
-            if(temp != 0)
+            if (ans.size() == 1)
             {
-                answer -= pow(2, temp);
-                temp = 0;
+                if (ans[0].first - 1 == i || i == ans[0].first + 1)
+                {
+                    ans.push_back({ i, str[i]});
+                    um[str[i]]--;
+
+                    Choose(cur + 1);
+
+                    um[ans.back().second]++;
+                    ans.pop_back();
+                }
+            }
+            else if (ans.size() > 1)
+            {
+                vector<pair<int, char>> temp = ans;
+                sort(temp.begin(), temp.end());
+
+                if (temp[0].first - 1 == i || temp.back().first + 1 == i)
+                {
+                    ans.push_back({ i, str[i] });
+                    um[str[i]]--;
+
+                    Choose(cur + 1);
+
+                    um[ans.back().second]++;
+                    ans.pop_back();
+                }
+            }
+            else if (ans.empty())
+            {
+                ans.push_back({ i, str[i] });
+                um[str[i]]--;
+
+                Choose(cur + 1);
+
+                um[ans.back().second]++;
+                ans.pop_back();
             }
         }
     }
-    
-    if(temp != 0)
+
+}
+
+
+int main()
+{
+    cin >> str;
+    for (int i = 0; i < str.size(); ++i)
     {
-        answer -= pow(2, temp);
-        temp = 0;
+        um[str[i]]++;
     }
 
 
+    Choose(1);
+    //현재 ans의 최대 혹은 최소 index와 1 차이나는 것만 들어올 수 있음
 
-
-    cout << answer;
-
-
+    cout << s.size();
+   
     return 0;
 }
