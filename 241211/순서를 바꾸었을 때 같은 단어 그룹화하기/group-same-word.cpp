@@ -16,7 +16,7 @@ int main()
         string str;
         cin >> str;
 
-        char board[1000];
+        char board[1002];
         for(int j = 0; j < str.size(); ++j)
         {
             board[i] = str[i];
