@@ -24,20 +24,20 @@ int main()
             else
                 cout <<"false\n";
         }
-        else if("add")
-        {
-            int num;
-            cin >> num;
-
-            us.insert(num);
-        }
-        else if("remove")
+        else if(str == "add")
         {
             int num;
             cin >> num;
             
-            us.erase(num);
+            us.insert(num);
         }
+        else if(str == "remove")
+        {
+            int num;
+            cin >> num;
+
+            us.erase(num);
+        }        
     }
     return 0;
 }
