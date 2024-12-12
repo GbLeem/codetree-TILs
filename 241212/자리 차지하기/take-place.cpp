@@ -38,6 +38,8 @@ int main()
                 s.erase(*s.begin());
                 answer++;
             }
+            else
+                break;
         }
     }
 
