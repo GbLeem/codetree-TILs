@@ -20,9 +20,6 @@ int main()
 
     //1 3 5
     //차이는 3이상
-
-    bool find = false;
-
     auto en = s.begin();
 
     for (auto st = s.begin(); st != s.end(); ++st)
@@ -30,8 +27,6 @@ int main()
         while (en != s.end())
         {
             en++;
-            if (en == s.end())
-                break;
             if (*en - *st >= m)
             {
                 answer = min(answer, *en - *st);
