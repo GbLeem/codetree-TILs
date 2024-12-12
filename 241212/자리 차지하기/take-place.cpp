@@ -8,7 +8,6 @@ using namespace std;
 int n, m;
 set<int> s;
 vector<int> vec;
-unordered_map<int, int> um;
 int answer = 0;
 
 int main() 
@@ -17,7 +16,6 @@ int main()
 
     for(int i = 1; i <= m; ++i)
     {
-        um[i] = 1;
         s.insert(i);
     }
     // 1 2 3 4
@@ -33,12 +31,16 @@ int main()
     // 1 1 4
     for(int i = 0; i < vec.size(); ++i)
     {
-        if(*s.begin() <= vec[i])
+        if(!s.empty())
         {
-            s.erase(*s.begin());
-            answer++;
+            if(*s.begin() <= vec[i])
+            {
+                s.erase(*s.begin());
+                answer++;
+            }
         }
     }
+
     cout << answer;
         
     return 0;
