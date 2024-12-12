@@ -35,6 +35,7 @@ int main()
             if (*en - *st >= m)
             {
                 answer = min(answer, *en - *st);
+                break;
             }
         }
     }
