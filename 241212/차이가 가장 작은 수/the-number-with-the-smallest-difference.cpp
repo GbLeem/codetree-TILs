@@ -1,10 +1,11 @@
 #include <iostream>
-#include <set>
+#include <vector>
 #include <climits>
+#include <algorithm>
 using namespace std;
 
 int n, m;
-set<int> s;
+vector<int> vec;
 int answer = INT_MAX;
 
 int main()
@@ -15,29 +16,34 @@ int main()
     {
         int num;
         cin >> num;
-        s.insert(num);
+        vec.push_back(num);
     }
 
-    //1 3 5
-    //차이는 3이상
-    auto en = s.begin();
+    sort(vec.begin(), vec.end());
 
-    for (auto st = s.begin(); st != s.end(); ++st)
+    int en = 0;
+    for (int st = 0; st < vec.size(); ++st)
     {
-        while (en != s.end())
+        while (en + 1 < vec.size())
         {
             en++;
-            if (*en - *st >= m)
+            if (vec[en] - vec[st] >= m)
             {
-                answer = min(answer, *en - *st);
+                answer = min(answer, vec[en] - vec[st]);
                 break;
             }
         }
+        if (vec[en] - vec[st] >= m)
+        {
+            answer = min(answer, vec[en] - vec[st]);           
+        }
     }
-    if(answer == INT_MAX)
+
+
+    if (answer == INT_MAX)
         cout << -1;
     else
-        cout << answer; 
+        cout << answer;
 
     return 0;
 }
