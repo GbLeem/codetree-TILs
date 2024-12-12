@@ -33,7 +33,7 @@ int main()
             //자신보다 같거나 작은 값 없애기
             auto it = s.lower_bound(vec[i]);
 
-            if (it == s.end())
+            if (it == s.end() || *it > vec[i])
             {
                 it--;
             }
@@ -45,8 +45,7 @@ int main()
                     answer++;
                     cout << answer;
                     return 0;
-                }
-                    
+                }                    
                 else
                 {
                     cout << answer;
