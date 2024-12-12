@@ -21,14 +21,14 @@ int main()
     //1 3 5
     //차이는 3이상
 
+    bool find = false;
+
     for(auto it = s.begin(); it != s.end(); ++it)
     {
         auto big = s.upper_bound(*it); //*it 보다 큰 수
         
         while(big != s.end())
         {
-            bool find = false;
-
             if(*big - *it >= m)
             {
                 answer = min(answer, *big - *it);
@@ -38,8 +38,10 @@ int main()
             big++;
         }                
     }
-
-    cout << answer;
+    if(!find)
+        cout << -1;
+    else
+        cout << answer;
 
     return 0;
 }
