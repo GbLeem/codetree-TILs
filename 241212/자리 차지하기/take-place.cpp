@@ -16,26 +16,23 @@ int main()
 
     for(int i = 1; i <= m; ++i)
     {
-        s.insert(i);
-    }
-    // 1 2 3 4
+        s.insert(i); // 1 2 3 4
+    }    
+
     for(int i = 0; i < n; ++i)
     {
         int num;
         cin >> num;
-        vec.push_back(num);
+        vec.push_back(num); //4 1 1
     }
 
-    sort(vec.begin(), vec.end()); //1 1 4
-
-    // 1 1 4
     for(int i = 0; i < vec.size(); ++i)
     {
         if(!s.empty())
         {
             if(*s.begin() <= vec[i])
             {
-                s.erase(*s.begin());
+                s.erase(vec[i]);
                 answer++;
             }
             else
