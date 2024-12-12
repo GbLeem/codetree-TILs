@@ -6,7 +6,7 @@ using namespace std;
 
 int n, m;
 vector<int> vec;
-int answer = INT_MAX;
+long answer = INT_MAX;
 
 int main()
 {
