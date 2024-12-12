@@ -7,11 +7,11 @@ int n, m;
 set<int> s;
 int answer = INT_MAX;
 
-int main() 
+int main()
 {
     cin >> n >> m;
 
-    for(int i = 0; i < n; ++i)
+    for (int i = 0; i < n; ++i)
     {
         int num;
         cin >> num;
@@ -23,25 +23,25 @@ int main()
 
     bool find = false;
 
-    for(auto it = s.begin(); it != s.end(); ++it)
+    auto en = s.begin();
+
+    for (auto st = s.begin(); st != s.end(); ++st)
     {
-        auto big = s.upper_bound(*it); //*it 보다 큰 수
-        
-        while(big != s.end())
+        while (en != s.end())
         {
-            if(*big - *it >= m)
-            {
-                answer = min(answer, *big - *it);
-                find = true;
+            en++;
+            if (en == s.end())
                 break;
+            if (*en - *st >= m)
+            {
+                answer = min(answer, *en - *st);
             }
-            big++;
-        }                
+        }
     }
-    if(!find)
+    if(answer == INT_MAX)
         cout << -1;
     else
-        cout << answer;
+        cout << answer; 
 
     return 0;
 }
