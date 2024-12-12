@@ -32,27 +32,32 @@ int main()
         {
             //자신보다 같거나 작은 값 없애기
             auto it = s.lower_bound(vec[i]);
-            while (1)
+
+            if (it == s.end())
             {
-                if (it == s.end())
-                {
-                    it--;
-                }
-                if (it == s.begin())
-                {
-                    if (*it <= vec[i])
-                        break;
-                    else
-                    {
-                        cout << answer;
-                        return 0;
-                    }
-                }
-                if (*it <= vec[i])
-                    break;
+                it--;
             }
-            s.erase(*it);
-            answer++;
+            if (it == s.begin())
+            {
+                if (*it <= vec[i])
+                {
+                    s.erase(*it);
+                    answer++;
+                    cout << answer;
+                    return 0;
+                }
+                    
+                else
+                {
+                    cout << answer;
+                    return 0;
+                }
+            }
+            if (*it <= vec[i])
+            {
+                s.erase(*it);
+                answer++;
+            }
         }
     }
 
