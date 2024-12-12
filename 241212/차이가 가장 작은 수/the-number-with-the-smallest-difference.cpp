@@ -4,9 +4,9 @@
 #include <algorithm>
 using namespace std;
 
-int n, m;
+long long n, m;
 vector<int> vec;
-long answer = INT_MAX;
+int answer = INT_MAX;
 
 int main()
 {
@@ -29,12 +29,14 @@ int main()
             en++;
             if (vec[en] - vec[st] >= m)
             {
+                //cout << vec[en] <<" " << vec[st] <<"\n";
                 answer = min(answer, vec[en] - vec[st]);
                 break;
             }
         }
         if (vec[en] - vec[st] >= m)
         {
+            //cout << vec[en] <<" " << vec[st] <<"\n";
             answer = min(answer, vec[en] - vec[st]);           
         }
     }
