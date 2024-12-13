@@ -43,14 +43,24 @@ int main()
         int x = get<1>(vec[i]);
         int y = get<2>(vec[i]);
 
+        //y가 새롭게 감염
         if(um[x] > 0 && um[y] == -1)
         {
             um[y] = K;
             people[y] = 1;
             um[x]--;
         }
-        
-        else if(um[x] > 0 && um[y] > 0)
+
+        //x가 새롭게 감염
+        else if (um[x] == -1 && um[y] > 0)
+        {
+            um[x] = K;
+            people[x] = 1;
+            um[y]--;
+        }
+
+        //둘다 이미 감염
+        else if(um[x] >= 0 && um[y] >= 0)
         {
             um[x]--;
             um[y]--;
