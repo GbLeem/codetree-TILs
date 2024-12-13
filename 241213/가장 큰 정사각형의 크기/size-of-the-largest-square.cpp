@@ -27,14 +27,17 @@ int main()
 
             if (board[x][y] == 1)
             {
-                while (y < m && board[x][y+length] == 1)
+                while (y < m && board[x][y + length] == 1)
                 {
                     length++;
                 }
 
                 bool check = true;
+                int maxX = 0;
+
                 for (int k = x; k < x + length; ++k)
                 {
+                    maxX++;
                     for (int l = y; l < y + length; ++l)
                     {
                         if (board[k][l] != 1)
@@ -43,16 +46,21 @@ int main()
                             break;
                         }
                     }
+
+                    if (!check)
+                    {
+                        answer = max(answer, maxX);
+                        break;
+                    }
                 }
 
-
                 if (check)
-                    answer = max(answer, length);
+                    answer = max(answer, length);                    
             }
         }
     }
 
-    cout << answer*answer;
+    cout << answer * answer;
 
 
     return 0;
