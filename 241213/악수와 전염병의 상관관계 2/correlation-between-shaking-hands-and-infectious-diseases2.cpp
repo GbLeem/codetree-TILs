@@ -7,8 +7,8 @@ using namespace std;
 
 int N, K, P, T;
 vector<tuple<int, int, int>> vec;
-unordered_map<int, int> um; //감염된 사람 넣기
-int people[102];
+unordered_map<int, int> um; //감염횟수
+int people[102]; //감염된 사람
 
 int main() 
 {
@@ -59,6 +59,8 @@ int main()
         {
             um[x]--;
             um[y]--;
+            people[x] = 1;
+            people[y] = 1;
         }
 
         bool check = true;
@@ -67,6 +69,7 @@ int main()
             if(um[j] > 0)
                 check = false;
         }       
+        //모든 횟수를 다 쓴 경우
         if(check)
             break;
     }
