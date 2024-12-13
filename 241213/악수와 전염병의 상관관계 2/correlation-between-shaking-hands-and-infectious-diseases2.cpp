@@ -8,6 +8,7 @@ using namespace std;
 int N, K, P, T;
 vector<tuple<int, int, int>> vec;
 unordered_map<int, int> um; //감염된 사람 넣기
+int people[102];
 
 int main() 
 {
@@ -18,7 +19,8 @@ int main()
     {
         um[i] = 0;
     }
-    um[P] = 1;
+    um[P] = K;
+    people[P] = 1;
 
     for(int i = 0; i < T; ++i)
     {
@@ -41,25 +43,38 @@ int main()
         int x = get<1>(vec[i]);
         int y = get<2>(vec[i]);
 
-        if(um[x] == 1)
+        if(um[x] > 0 && um[y] <= 0)
         {
-            um[y] = 1;
-            K--;
+            um[y] = K;
+            people[y] = 1;
+            um[x]--;
         }
-        else if(um[y] == 1)
+        else if(um[x] <= 0 && um[y] > 0)
         {
-            um[x] = 1;
-            K--;
+            um[x] = K;
+            people[x] = 1;
+            um[y]--;
+        }
+        else if(um[x] > 0 && um[y] > 0)
+        {
+            um[x]--;
+            um[y]--;
         }
 
-        if(K == 0)
+        bool check = true;
+        for(int j = 1; j <= N; ++j)
+        {
+            if(um[j] > 0)
+                check = false;
+        }       
+        if(check)
             break;
     }
     
     
     for(int i = 1; i <= N; ++i)
     {
-        cout << um[i];
+        cout << people[i];
     }
 
     return 0;
