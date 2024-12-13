@@ -60,7 +60,7 @@ int main()
         }
 
         //둘다 이미 감염 혹은 감염 끝
-        else if(um[x] >= 0 && um[y] >= 0)
+        else if(um[x] > INT_MIN && um[y] > INT_MIN)
         {
             um[x]--;
             um[y]--;
