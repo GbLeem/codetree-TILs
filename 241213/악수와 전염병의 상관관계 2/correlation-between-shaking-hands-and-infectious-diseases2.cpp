@@ -3,6 +3,7 @@
 #include <tuple>
 #include <algorithm>
 #include <unordered_map>
+#include <climits>
 using namespace std;
 
 int N, K, P, T;
@@ -17,7 +18,7 @@ int main()
     //감염된 사람 체크
     for(int i = 1; i <= N; ++i)
     {
-        um[i] = -1;
+        um[i] = INT_MIN;
     }
     um[P] = K;
     people[P] = 1;
@@ -44,22 +45,21 @@ int main()
         int y = get<2>(vec[i]);
 
         //y가 새롭게 감염
-        if(um[x] > 0 && um[y] == -1)
+        if(um[x] > 0 && um[y] == INT_MIN)
         {
             um[y] = K;
             people[y] = 1;
             um[x]--;
         }
-
         //x가 새롭게 감염
-        else if (um[x] == -1 && um[y] > 0)
+        else if (um[x] == INT_MIN && um[y] > 0)
         {
             um[x] = K;
             people[x] = 1;
             um[y]--;
         }
 
-        //둘다 이미 감염
+        //둘다 이미 감염 혹은 감염 끝
         else if(um[x] >= 0 && um[y] >= 0)
         {
             um[x]--;
