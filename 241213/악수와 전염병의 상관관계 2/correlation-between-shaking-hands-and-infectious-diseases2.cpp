@@ -17,7 +17,7 @@ int main()
     //감염된 사람 체크
     for(int i = 1; i <= N; ++i)
     {
-        um[i] = 0;
+        um[i] = -1;
     }
     um[P] = K;
     people[P] = 1;
@@ -43,18 +43,13 @@ int main()
         int x = get<1>(vec[i]);
         int y = get<2>(vec[i]);
 
-        if(um[x] > 0 && um[y] <= 0)
+        if(um[x] > 0 && um[y] == -1)
         {
             um[y] = K;
             people[y] = 1;
             um[x]--;
         }
-        else if(um[x] <= 0 && um[y] > 0)
-        {
-            um[x] = K;
-            people[x] = 1;
-            um[y]--;
-        }
+        
         else if(um[x] > 0 && um[y] > 0)
         {
             um[x]--;
