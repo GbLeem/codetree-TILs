@@ -15,22 +15,22 @@ int main()
     {
         cin >> board[i];
     }    
-
-    //t보다 크거나 같은것 찾기
-
-    for(int i = 0; i < n; ++i)
+    
+    for(int i = 0; i < n - t + 1; ++i)
     {
-        int cnt = t;
+        int cnt = 0;
         int temp = 0;
         
         for(int j = i; j < n; ++j)
         {
+            //차이
             int cost = abs(h - board[j]);
-            
-            cnt--;
+            //비용 
             temp += cost;
+            //연속 횟수 체크
+            cnt--;
             
-            if(cnt == 0)
+            if(cnt == t)
                 break;
         }
 
